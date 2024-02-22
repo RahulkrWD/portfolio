@@ -5,6 +5,7 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import About from "./About";
 import Skills from "./Skills";
+import Services from "./Certificate";
 import Projects from "./Projects";
 
 function CustomTabPanel(props) {
@@ -66,8 +67,14 @@ export default function ReactTab() {
             />
             <Tab
               className={`fw-bold`}
-              label="Projects"
+              label="Certificate"
               {...a11yProps(2)}
+              sx={{ fontSize: 11 }}
+            />
+            <Tab
+              className={`fw-bold`}
+              label="Projects"
+              {...a11yProps(3)}
               sx={{ fontSize: 11 }}
             />
           </Tabs>
@@ -77,6 +84,9 @@ export default function ReactTab() {
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
           <Skills />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          <Services />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
           <Projects />
