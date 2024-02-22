@@ -1,0 +1,22 @@
+.heading {
+  text-align: center;
+}
+.contact {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.socialMedia,
+.message {
+  padding: 15px 20px;
+  margin: 20px 0;
+}
+.heading {
+  border-bottom: 2px solid red;
+  width: max-content;
+}
+.message {
+  text-align: center;
+  box-shadow: 3px 3px 15px rgb(25, 24, 24), 3px 3px 15px rgb(25, 24, 24);
+  border-radius: 10px;
+}

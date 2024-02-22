@@ -1,0 +1,43 @@
+.TextField {
+  width: 90%;
+  box-shadow: 1px 1px 2px gray;
+  border-radius: 7px;
+}
+.submitBtn {
+  box-shadow: 1px 1px 3px #3e3e3e;
+  border: transparent;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.submitBtn:hover,
+.submitBtn:active {
+  opacity: 0.6;
+}
+/* send.js */
+
+.sendIcons {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bolder;
+  border-radius: 50%;
+  opacity: 0;
+  animation: show 1s ease forwards;
+  transform: scale(0.2);
+  transition: all 1s ease;
+}
+.text {
+  opacity: 0;
+  animation: show 1s ease forwards;
+  transform: scale(0.2);
+  transition: all 1s ease;
+}
+@keyframes show {
+  to {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
