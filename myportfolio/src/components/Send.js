@@ -9,7 +9,7 @@ function Send() {
   useEffect(() => {
     const token = sessionStorage.getItem("email");
     if (!token) {
-      navigate("/");
+      navigate("/homepage");
     }
 
     const interval = setInterval(() => {
@@ -21,7 +21,7 @@ function Send() {
 
   useEffect(() => {
     if (count === 0) {
-      navigate("/");
+      navigate("/homepage");
       sessionStorage.removeItem("email");
     }
   }, [count, navigate]);

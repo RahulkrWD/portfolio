@@ -13,6 +13,7 @@ function HomePage() {
       <Contact />
       <hr />
       <Footer />
+      <hr />
     </div>
   );
 }

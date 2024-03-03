@@ -6,8 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 function Message() {
-  const [send, setSend] = useState();
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
@@ -15,20 +14,15 @@ function Message() {
 
   async function fetchMessage() {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API}/message`,
-        {
-          username,
-          email,
-          message,
-        }
-      );
+      const response = await axios.post(`${process.env.REACT_APP_API}/mail`, {
+        name,
+        email,
+        message,
+      });
       if (response.data.success) {
-        toast.success(response.data.message, send);
-        setSend(response.data);
+        toast.success(response.data.message);
         navigate("/send");
-        const token = sessionStorage.setItem("email", email);
-        console.log(token);
+        sessionStorage.setItem("email", email);
       } else {
         toast.error(response.data.message);
       }
@@ -42,8 +36,8 @@ function Message() {
         className={`m-3 ${styles.TextField}`}
         id="outlined-basic"
         label="Name"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
       <br />
       <TextField

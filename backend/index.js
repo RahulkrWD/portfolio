@@ -1,11 +1,9 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
-const connectDB = require("./db");
-const userModel = require("./user");
 const cors = require("cors");
+const nodemailer = require("nodemailer");
 dotenv.config();
-connectDB();
 app.use(cors());
 app.use(express.json());
 
@@ -13,27 +11,41 @@ app.get("/", function (req, res) {
   res.send({ message: "Hello world" });
 });
 
-app.post("/message", async function (req, res) {
-  const { username, email, message } = req.body;
-  if (!username) {
-    return res.send({ message: "Name is Required" });
+// nodemailer
+app.post("/mail", function (req, res) {
+  const { name, email, message } = req.body;
+  if (!name) {
+    return res.send({ success: false, message: "Name is required" });
   }
   if (!email) {
-    return res.send({ message: "Email is Required" });
+    return res.send({ success: false, message: "Email is required" });
   }
   if (!message) {
-    return res.send({ message: "Message is required" });
+    return res.send({ success: false, message: "Message is required" });
   }
-  try {
-    const sendMessage = await userModel.create({ username, email, message });
-    res.send({
-      success: true,
-      message: "Send message successfully",
-      sendMessage,
-    });
-  } catch (err) {
-    res.send({ success: false, message: "Message send Failed" });
-  }
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.Email,
+      pass: process.env.Pass,
+    },
+  });
+  const mailOptions = {
+    from: process.env.Email,
+    to: process.env.Email,
+    subject: `New Contact ${name}`,
+    text: `Sender Email: ${email}\n\n${message}`,
+  };
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      return res.status(500).send({
+        success: false,
+        message: "Email not sent",
+        error: err.message,
+      });
+    }
+    res.send({ success: true, message: "Email sent", info });
+  });
 });
 
 const PORT = process.env.PORT || 3600;

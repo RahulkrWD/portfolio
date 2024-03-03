@@ -28,7 +28,7 @@ function Projects() {
   return (
     <div className={styles.projectArea}>
       {project.map((data) => (
-        <>
+        <div>
           <center>
             <video
               className={styles.videoImage}
@@ -41,7 +41,7 @@ function Projects() {
               Click
             </Link>
           </center>
-        </>
+        </div>
       ))}
     </div>
   );
