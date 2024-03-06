@@ -7,6 +7,7 @@ import About from "./About";
 import Skills from "./Skills";
 import Services from "./Certificate";
 import Projects from "./Projects";
+import styles from "../styleSheet/ReactTab.module.css";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -45,8 +46,8 @@ export default function ReactTab() {
   };
 
   return (
-    <div className="container">
-      <Box sx={{ width: "100%" }}>
+    <div className={`container ${styles.reactTab}`}>
+      <Box>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             value={value}
@@ -57,25 +58,25 @@ export default function ReactTab() {
               className={`fw-bold`}
               label="About"
               {...a11yProps(0)}
-              sx={{ fontSize: 11 }}
+              sx={{ fontSize: 11, color: "red" }}
             />
             <Tab
               className={`fw-bold `}
               label="Skills"
               {...a11yProps(1)}
-              sx={{ fontSize: 11 }}
+              sx={{ fontSize: 11, color: "red" }}
             />
             <Tab
               className={`fw-bold`}
               label="Certificate"
               {...a11yProps(2)}
-              sx={{ fontSize: 11 }}
+              sx={{ fontSize: 11, color: "red" }}
             />
             <Tab
               className={`fw-bold`}
               label="Projects"
               {...a11yProps(3)}
-              sx={{ fontSize: 11 }}
+              sx={{ fontSize: 11, color: "red" }}
             />
           </Tabs>
         </Box>

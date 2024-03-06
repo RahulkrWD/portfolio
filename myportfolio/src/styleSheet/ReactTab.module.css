@@ -1,3 +1,5 @@
+/* ReactTab */
+
 /* About us */
 .aboutUs {
   max-width: 1000px;
@@ -13,23 +15,22 @@
   gap: 10px;
 }
 .icons {
-  width: 120px;
-  height: 130px;
+  width: 100px;
+  height: 110px;
   margin: 10px;
   background-color: white;
   border-radius: 10px;
   object-fit: contain;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 1px 1px 5px gray;
+  box-shadow: 1px 1px 4px gray, -1px -1px 4px gray;
+  perspective: 700px;
 }
 .icons:hover,
 .icons:active {
-  transform: scale(0.9);
+  transform: rotate(10deg);
   box-shadow: 3px 3px 7px gray;
 }
-
-/* Certificate */
 
 /* Projectes */
 .projectArea {

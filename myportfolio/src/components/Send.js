@@ -28,8 +28,8 @@ function Send() {
 
   return (
     <div
-      className="container d-flex justify-content-center align-items-center"
-      style={{ height: "60vh" }}
+      className=" d-flex justify-content-center align-items-center text-bg-dark"
+      style={{ height: "100vh" }}
     >
       <center>
         <div className={`text-bg-success ${styles.sendIcons}`}>&#10004;</div>

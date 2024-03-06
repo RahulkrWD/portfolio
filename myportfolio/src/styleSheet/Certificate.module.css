@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.certificate {
+  padding: 7px;
+  perspective: 800px;
+  margin: 10px;
+}
+.image {
+  display: block;
+  width: 300px;
+  margin: 7px;
+  transition: all 0.5s ease;
+  transform: rotateX(60deg);
+}
+.image:hover {
+  opacity: 0.7;
+  transform: rotate(0deg);
+}
+.links {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+@media (max-width: 400px) {
+  .image {
+    width: 250px;
+  }
+}

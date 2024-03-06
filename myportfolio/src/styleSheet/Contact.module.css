@@ -15,8 +15,9 @@
   border-bottom: 2px solid red;
   width: max-content;
 }
+
 .message {
   text-align: center;
-  box-shadow: 3px 3px 15px rgb(25, 24, 24), 3px 3px 15px rgb(25, 24, 24);
+  box-shadow: inset 2px 2px 7px black, inset -2px -2px 7px black;
   border-radius: 10px;
 }
