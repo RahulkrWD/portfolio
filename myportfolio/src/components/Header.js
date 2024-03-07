@@ -14,13 +14,13 @@ function Header() {
         <h6 className={`fst-italic ${styles.animation}`}>
           Full Stack Web Developer
         </h6>
-        <Link
+        {/* <Link
           className={`btn text-bg-success m-2 fw-bold ${styles.linkPdf}`}
           to={"/image/resume(full).pdf"}
           target="_blank"
         >
           Download Resume
-        </Link>
+        </Link> */}
       </div>
       <div className={styles.col}>
         <img
