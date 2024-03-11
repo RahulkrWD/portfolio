@@ -6,12 +6,15 @@ function Skills() {
     { image: "/image/HTML.png" },
     { image: "/image/CSS.png" },
     { image: "/image/bootstrap.jpg" },
+    { image: "/image/tailwind.png" },
     { image: "/image/javascript.jpg" },
     { image: "/image/reactjs.png" },
     { image: "/image/mongodb.png" },
     { image: "/image/nodeJs_express.png" },
     { image: "/image/linux.png" },
+    { image: "/image/MUI.png" },
     { image: "/image/GitHub.png" },
+    { image: "/image/php.png" },
   ];
   return (
     <div className={`container ${styles.skillsContainer}`}>
