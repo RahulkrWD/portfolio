@@ -30,7 +30,7 @@ function Contact() {
           <Link
             target="_blank"
             className={`m-2 fs-2 ${styles.linkedin}`}
-            to={"https://linkedin.com/in/rahul-kumar-6774a4259"}
+            to={"https://www.linkedin.com/in/rahulkmr07"}
           >
             <i className="fa-brands fa-linkedin-in"></i>
           </Link>
