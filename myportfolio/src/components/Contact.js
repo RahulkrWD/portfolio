@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../styleSheet/Contact.module.css";
 import { Link } from "react-router-dom";
 import Message from "./Message";
+import Whatsapp from "./Whatsapp";
 
 function Contact() {
   return (
@@ -48,6 +49,8 @@ function Contact() {
           >
             <i className="fa-brands fa-square-instagram"></i>
           </Link>
+          <br />
+          <Whatsapp />
         </div>
         <div className={styles.message}>
           <Message />
