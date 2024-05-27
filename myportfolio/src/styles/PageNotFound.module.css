@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.not_found {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+}
+
+.not_found_heading {
+  font-size: 2em;
+  margin: 20px 0;
+}
+
+.not_found_desc {
+  font-size: 1.2em;
+  color: #555;
+}
