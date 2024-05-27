@@ -5,6 +5,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@mui/icons-material": "^5.15.7",
     "@mui/lab": "^5.0.0-alpha.165",
     "@mui/material": "^5.15.10",
@@ -12,13 +15,18 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
+    "framer-motion": "^11.1.9",
+    "intersection-observer": "^0.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.2.1",
     "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
+    "react-spring": "^9.7.3",
     "react-tab-set": "^2.0.65",
     "react-tabs": "^6.0.2",
+    "styled-components": "^6.1.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

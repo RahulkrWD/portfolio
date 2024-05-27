@@ -1,0 +1,115 @@
+.header {
+  height: 65vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 25px 0;
+}
+.col {
+  position: relative;
+  top: -100%;
+  animation: sideTop 1s ease forwards;
+  animation-delay: 0.5s;
+}
+@keyframes sideTop {
+  to {
+    top: 0;
+  }
+}
+.header_image {
+  width: 280px;
+  height: 280px;
+}
+@keyframes show {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hello,
+.adminNames,
+.animation,
+.linkPdf {
+  transform: scale(0.1);
+  opacity: 0;
+  animation: show 1s ease forwards;
+  animation-delay: 1s;
+  transition: all 1s ease;
+}
+.adminNames {
+  animation-delay: 1.2s;
+}
+.animation {
+  margin: 10px 0;
+  animation-delay: 1.3s;
+}
+.linkPdf {
+  text-decoration: none;
+  background-color: green;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  animation-delay: 1.5s;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+@keyframes hello {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.adminName {
+  background: linear-gradient(to right, red, blue 50%, #f504d5, black);
+  color: transparent;
+  background-size: 200% 100%;
+  animation: fill 7s infinite linear;
+  background-clip: text;
+}
+
+@keyframes fill {
+  0% {
+    background-position: 100;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .adminName {
+    font-size: 20px;
+  }
+  .animation {
+    font-size: 17px;
+  }
+  .header_image {
+    width: 240px;
+    height: 240px;
+  }
+  .header {
+    height: 55vh;
+  }
+}
+@media (max-width: 500px) {
+  .header {
+    padding: 25px 15px;
+    height: 50vh;
+  }
+  .adminName {
+    font-size: 18px;
+  }
+  .animation {
+    font-size: 15px;
+  }
+  .header_image {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media (max-width: 400px) {
+  .header_image {
+    width: 170px;
+    height: 170px;
+  }
+}

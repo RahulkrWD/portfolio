@@ -1,0 +1,22 @@
+.heading {
+  text-align: center;
+  border-bottom: 2px solid red;
+  width: max-content;
+}
+.contact {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.socialMedia,
+.message {
+  padding: 15px 20px;
+  margin: 20px 0;
+}
+
+.message {
+  text-align: center;
+  box-shadow: inset 2px 2px 7px black, inset -2px -2px 7px black;
+  border-radius: 10px;
+}
