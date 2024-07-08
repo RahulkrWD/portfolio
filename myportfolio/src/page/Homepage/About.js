@@ -9,7 +9,7 @@ function About() {
         <div className={styles.images_container}>
           <img
             className={styles.about_image}
-            src="/image/IMG_20231003_221759_137-removebg-preview.png"
+            src="/image/profile_image.jpg"
             alt=""
           />
         </div>
