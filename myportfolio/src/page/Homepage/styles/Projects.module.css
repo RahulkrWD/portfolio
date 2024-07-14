@@ -1,75 +1,62 @@
-.imageSide {
-  width: 100%;
-  height: 100%;
+.Projects_container {
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
+  margin-bottom: 150px;
+  flex-wrap: wrap;
 }
-.sliderButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-.imageContainer {
-  position: relative;
+
+.project_image {
   width: 100%;
-  height: 90vh;
+  height: auto;
+  object-fit: cover;
+  border-radius: 7px;
+  padding: 5px;
+  box-shadow: 4px 8px 8px gray;
+  transition: transform 0.3s ease-in-out;
   overflow: hidden;
-  border-radius: 2px;
+}
+.project_image:hover {
+  transform: scale(1.1);
 }
 
-.sliderImage {
+.Projects_desc {
   width: 100%;
-  height: 100%;
+  font-size: clamp(15px, 2vw, 20px);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.imageContainer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  pointer-events: none;
-}
-.liveButton {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+@media (min-width: 768px) {
+  .Projects_container {
+    flex-wrap: wrap;
+  }
+  .project_image {
+    width: 450px;
+    height: 350px;
+  }
+  .Projects_desc {
+    width: 600px;
+  }
 }
 
-.sliderButton:nth-of-type(1) {
-  left: 20px;
+@media (max-width: 767px) {
+  .project_image,
+  .Projects_desc {
+    width: 80%;
+  }
+  .Projects_container {
+    margin-bottom: 90px;
+  }
 }
 
-.sliderButton:nth-of-type(2) {
-  right: 20px;
+.alt_layout:nth-child(even) .project_image {
+  order: 2;
 }
-@media (max-width: 1100px) {
-  .imageContainer {
-    height: 85vh;
-  }
+
+.alt_layout:nth-child(even) .Projects_desc {
+  order: 1;
 }
-@media (max-width: 900px) {
-  .imageContainer {
-    height: 70vh;
-  }
-}
-@media (max-width: 700px) {
-  .imageContainer {
-    height: 60vh;
-  }
-}
-@media (max-width: 550px) {
-  .imageContainer {
-    height: 50vh;
-  }
-}
-@media (max-width: 400px) {
-  .imageContainer {
-    height: 40vh;
-  }
+.alt_layout {
+  flex-wrap: wrap-reverse;
 }
