@@ -24,7 +24,7 @@
   width: 300px;
   margin: 7px;
   transition: all 0.5s ease;
-  transform: rotateX(60deg);
+  transform: rotateX(30deg);
 }
 
 .image:hover {
