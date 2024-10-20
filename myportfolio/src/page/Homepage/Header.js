@@ -18,7 +18,7 @@ function Header() {
           </h6>
           <Link
             className={styles.linkPdf}
-            to={"/resume4.0.pdf"}
+            to={"/MERN_resume.pdf"}
             target="_blank"
           >
             Download Resume
