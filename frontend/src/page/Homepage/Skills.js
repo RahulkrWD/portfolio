@@ -15,8 +15,7 @@ const TAGS = [
   "Redux Toolkit",
   "Core Java",
   "Oracle Database",
-  "SQL/MySQL",
-  "Agile Methodology",
+  "SQL/MySQL"
 ];
 const DURATION = 15000;
 const ROWS = 5;
