@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles/Skills.module.css";
-import Layout from "../../components/Layout";
 const TAGS = [
   "HTML",
   "CSS",
@@ -71,7 +70,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <Layout>
+ 
       <div>
         <h5 className="text-center p-1 text-bg-secondary mt-5">Skills</h5>
         <div className={styles.apps}>
@@ -81,7 +80,7 @@ const Skills = () => {
           </div>
         </div>
       </div>
-    </Layout>
+  
   );
 };
 

@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./Layout.module.css";
 
 function Layout({ children }) {
   const [circles, setCircles] = useState([]);
+  const idCounter = useRef(0);
 
   const handleMouseMove = (e) => {
-    const x = e.clientX;
-    const y = e.clientY;
+    const x = e.clientX + window.scrollX; 
+    const y = e.clientY + window.scrollY; 
     createCircle(x, y);
   };
 
   const createCircle = (x, y) => {
+    idCounter.current += 1; 
     const circle = {
-      id: Date.now(),
+      id: idCounter.current,
       x,
       y,
       color: getRandomColor(),
@@ -36,13 +38,13 @@ function Layout({ children }) {
 
   return (
     <div className={styles.container} onMouseMove={handleMouseMove}>
-      {circles.map((circle, index) => (
+      {circles.map((circle) => (
         <div
-          key={index}
+          key={circle.id}
           className={styles.circle}
           style={{
-            left: circle.x,
-            top: circle.y,
+            left: `${circle.x}px`, 
+            top: `${circle.y}px`, 
             backgroundColor: circle.color,
           }}
         ></div>
@@ -51,5 +53,4 @@ function Layout({ children }) {
     </div>
   );
 }
-
 export default Layout;

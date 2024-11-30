@@ -1,11 +1,10 @@
 import React from "react";
 import styles from "./styles/Header.module.css";
 import { Link } from "react-router-dom";
-import Layout from "../../components/Layout";
 
 function Header() {
   return (
-    <Layout>
+  
       <div id="about" className={`container ${styles.header}`}>
         <div className={styles.col}>
           <h5 className={`text-primary ${styles.hello}`}>Hello,</h5>
@@ -28,7 +27,7 @@ function Header() {
           <img className={styles.header_image} src="/image/image.svg" alt="" />
         </div>
       </div>
-    </Layout>
+    
   );
 }
 

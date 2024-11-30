@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./styles/Message.module.css";
+import styles from "./styles/Contact.module.css";
 
 function Send() {
   const [count, setCount] = useState(5);

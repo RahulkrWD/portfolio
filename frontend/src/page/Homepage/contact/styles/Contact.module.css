@@ -20,3 +20,58 @@
   box-shadow: inset 2px 2px 7px black, inset -2px -2px 7px black;
   border-radius: 10px;
 }
+.TextField {
+  width: 90%;
+  border-radius: 7px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.submitBtn {
+  box-shadow: 1px 1px 3px #3e3e3e;
+  border: transparent;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.message_container {
+  max-width: 1300px;
+  width: 400px;
+  height: fit-content;
+  border-radius: 7px;
+  padding: 15px;
+  margin: 20px;
+  background: #f9f9f9;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* send.js */
+
+.sendIcons {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bolder;
+  border-radius: 50%;
+  opacity: 0;
+  animation: show 1s ease forwards;
+  transform: scale(0.2);
+  transition: all 1s ease;
+}
+.text {
+  opacity: 0;
+  animation: show 1s ease forwards;
+  transform: scale(0.2);
+  transition: all 1s ease;
+}
+@keyframes show {
+  to {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+@media (max-width: 850px) {
+  .message_container {
+    width: 400px;
+  }
+}

@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./styles/About.module.css";
-import Layout from "../../components/Layout";
+
 
 function About() {
   return (
-    <Layout>
+    <div>
       <div className={styles.about_container}>
         <div className={styles.images_container}>
           <img
@@ -27,7 +27,7 @@ function About() {
           </p>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 }
 
