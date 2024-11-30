@@ -1,24 +1,30 @@
+
+/* Bubble Animation */
 .container {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow: hidden; 
 }
 
 .circle {
-  z-index: 20;
   position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  pointer-events: none;
-  animation: expand 1s ease-out;
+  pointer-events: none; 
+  animation: fade-out 1s forwards; 
+  z-index: 100;
 }
 
-@keyframes expand {
-  0% {
-    transform: scale(0.3);
-  }
-  100% {
+@keyframes fade-out {
+  from {
+    opacity: 1;
     transform: scale(1);
   }
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
 }
+
+/* *********** */

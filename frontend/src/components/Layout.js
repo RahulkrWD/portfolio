@@ -3,7 +3,7 @@ import styles from "./Layout.module.css";
 
 function Layout({ children }) {
   const [circles, setCircles] = useState([]);
-  const idCounter = useRef(0);
+  const idCounter = useRef(0); 
 
   const handleMouseMove = (e) => {
     const x = e.clientX + window.scrollX; 
@@ -40,7 +40,7 @@ function Layout({ children }) {
     <div className={styles.container} onMouseMove={handleMouseMove}>
       {circles.map((circle) => (
         <div
-          key={circle.id}
+          key={circle.id} 
           className={styles.circle}
           style={{
             left: `${circle.x}px`, 
