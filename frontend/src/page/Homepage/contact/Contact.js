@@ -62,7 +62,7 @@ export function Message() {
       />
 
       <TextField
-        className={`m-3 ${styles.TextField}`}
+        className={`m-3 text-light ${styles.TextField}`}
         id="standard-basic"
         label="Email"
         value={email}
@@ -100,9 +100,8 @@ export function Message() {
 
 function Contact() {
   return (
-      <div>
-        <h5 className="text-center text-bg-secondary p-1 mt-3">Contact Me</h5>
-
+      <div id="contact" className="main_container">
+        <h2 className="contact_heading" >Contact Me</h2>
         <div className={styles.contact}>
           <div className={styles.socialMedia}>
             <p>Touch on social media</p>

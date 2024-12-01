@@ -1,5 +1,5 @@
 .marquee {
-  min-height: 70vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
   position: relative;
@@ -34,7 +34,7 @@
 
 @media (max-width: 700px) {
   .marquee {
-    min-height: 50vh;
+    min-height: 30vh;
   }
   .image {
     width: 200px;
@@ -50,7 +50,7 @@
     width: 150px;
   }
   .marquee {
-    min-height: 40vh;
+    min-height: 20vh;
   }
   .track {
     gap: 20px;

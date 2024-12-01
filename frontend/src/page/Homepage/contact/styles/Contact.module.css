@@ -8,7 +8,9 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   align-items: center;
+  color: white;
 }
+
 .socialMedia,
 .message {
   padding: 15px 20px;
@@ -38,8 +40,7 @@
   border-radius: 7px;
   padding: 15px;
   margin: 20px;
-  background: #f9f9f9;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.1), -10px 10px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* send.js */

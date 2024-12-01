@@ -28,8 +28,8 @@ function Certificate() {
   ];
 
   return (
-    <div>
-      <h4 className="text-center p-1 mt-4 text-bg-secondary">Certificates</h4>
+    <div id="certificate" className="main_container">
+      <h2 className="certificate_heading">Certificates</h2>
       <div className={`${styles.marquee} ${isHovered ? styles.paused : ""}`}>
         <div className={styles.track}>
           {data.concat(data).map((item, index) => (

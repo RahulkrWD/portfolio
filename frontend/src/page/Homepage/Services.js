@@ -7,11 +7,10 @@ import {
   faCogs,
 } from "@fortawesome/free-solid-svg-icons";
 
-
 function Services() {
   return (
-    <div>
-      <h4 className="text-center p-1 m4-3 text-bg-secondary">Services</h4>
+    <div id="services" className="main_container">
+      <h2 className="services_heading">Services</h2>
       <div className={styles.services_container}>
         <div className={styles.service}>
           <h5 className={styles.service_heading}>

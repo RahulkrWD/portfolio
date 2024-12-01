@@ -71,8 +71,8 @@ const Skills = () => {
 
   return (
  
-      <div>
-        <h5 className="text-center p-1 text-bg-secondary mt-5">Skills</h5>
+      <div id="skills">
+        <h2 className="skills_heading">Skills</h2>
         <div className={styles.apps}>
           <div className={styles.tag_list}>
             {tags}
