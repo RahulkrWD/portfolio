@@ -4,23 +4,30 @@ import { Link } from "react-router-dom";
 
 const images = [
   {
+    title: "Teacher Dashboard",
+    src: "./image/teacher_dashboard.png",
+    alt: "Image 1",
+    live: "https://teacher-dashboard-task.vercel.app/",
+    desc: "The Teacher Dashboard is a web app for managing students, enabling CRUD operations and attendance tracking. Built with ReactJS, Vite, MUI, Node.js, Express.js, and MongoDB, it showcases my skills in creating efficient and user-friendly applications.",
+  },
+  {
     title: "E-commerce website",
     src: "https://i.ibb.co/mT01k9B/dep.png",
-    alt: "Image 1",
+    alt: "Image 2",
     live: "https://dep-com.vercel.app",
     desc: "Dep.com is a MERN stack e-commerce app with OTP-based verification, product search, sorting, coupon discounts, WhatsApp support, and Razorpay integration. Built using Redux Toolkit, Material-UI, and Bootstrap, it ensures a secure and user-friendly shopping experience, showcasing my skills in developing robust web applications.",
   },
   {
     title: "Zomato Clone",
     src: "https://i.ibb.co/9GDF1NV/zomato.png",
-    alt: "Image 2",
+    alt: "Image 3",
     live: "https://ed-zomato-app.vercel.app/",
     desc: "The Zomato clone, built with the MERN stack, includes JWT authentication, location-based restaurant search, detailed menus, pagination, and menu filtering. It showcases my skills in creating secure and user-friendly web applications.",
   },
   {
     title: "Weather App",
     src: "https://i.ibb.co/3cGG12v/weather-app.png",
-    alt: "Image 3",
+    alt: "Image 4",
     live: "https://verdant-licorice-65c812.netlify.app/",
     desc: "The Weather App, built with HTML, CSS, JavaScript, and a weather API, delivers real-time updates, forecasts, and location-based conditions. Its responsive design showcases my skills in API integration and creating interactive web applications.",
   },
@@ -33,18 +40,15 @@ const images = [
   },
 ];
 
-function Projects(){
+function Projects() {
   return (
     <div id="projects" className="main_container">
       <h2 className="project_heading">Projects</h2>
       <div className={styles.project_container}>
         {images.map((item, index) => (
-          <div
-            key={index}
-          >
-          <h4 className={styles.title_heading}>{item.title}</h4>
+          <div key={index}>
+            <h4 className={styles.title_heading}>{item.title}</h4>
             <div className={styles.projectCard}>
-            
               <img
                 className={styles.projectImage}
                 src={item.src}
@@ -52,11 +56,8 @@ function Projects(){
               />
               <div className={styles.projectOverlay}>
                 <p className={styles.desc}>{item.desc}</p>
-                <Link
-                  to={item.live}
-                  target="_blank"
-                >
-                 <i className="fa-solid fa-up-right-from-square"></i>
+                <Link to={item.live} target="_blank">
+                  <i className="fa-solid fa-up-right-from-square"></i>
                 </Link>
               </div>
             </div>
@@ -65,6 +66,6 @@ function Projects(){
       </div>
     </div>
   );
-};
+}
 
 export default Projects;
