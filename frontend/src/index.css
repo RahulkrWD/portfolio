@@ -14,19 +14,20 @@
 
 body {
   background: linear-gradient(60deg, 
-  #ff0f0f, 
-  #ff7b00,
-  #ffd700, 
-  #32cd32, 
-  #1e90ff, 
-  #4a00e8, 
-  #8a2be2, 
-  #ff1493, 
-  #ff69b4, 
-  #9400d3  
+  #4b4a4a, 
+  #393837,
+  #3f3f33, 
+  #293829, 
+  #384f4f, 
+  #504040, 
+  #535365, 
+  #4f404f, 
+  #322932, 
+  #232331  
 );
   background-size: 400% 400%;
   animation: gradientAnimation 5s ease infinite;
+  color: white;
 }
 
 @keyframes gradientAnimation {
@@ -131,8 +132,8 @@ body::-webkit-scrollbar {
 
 .section {
   opacity: 0;
-  transform: scale(0.2);
-  transition: opacity 1s ease-in-out, transform 0.3s ease-in-out;
+  transform: scale(0.7);
+  transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .section.animate {

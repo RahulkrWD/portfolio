@@ -14,7 +14,7 @@ const TAGS = [
   "Redux Toolkit",
   "Core Java",
   "Oracle Database",
-  "SQL/MySQL"
+  "SQL/MySQL",
 ];
 const DURATION = 15000;
 const ROWS = 5;
@@ -70,17 +70,15 @@ const Skills = () => {
   }, []);
 
   return (
- 
-      <div id="skills">
-        <h2 className="skills_heading">Skills</h2>
-        <div className={styles.apps}>
-          <div className={styles.tag_list}>
-            {tags}
-            <div className={styles.fade} />
-          </div>
+    <div id="skills">
+      <h2 className="skills_heading">Skills</h2>
+      <div className={styles.apps}>
+        <div className={styles.tag_list}>
+          {tags}
+          <div className={styles.fade} />
         </div>
       </div>
-  
+    </div>
   );
 };
 
