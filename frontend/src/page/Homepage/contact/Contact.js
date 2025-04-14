@@ -5,18 +5,31 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import {
+  FaPhone,
+  FaEnvelope,
+  FaGithub,
+  FaLinkedinIn,
+  FaFacebook,
+  FaWhatsapp,
+  FaPaperPlane,
+} from "react-icons/fa";
 
-
-export function Whatsapp(){
+export function Whatsapp() {
   const phoneNumber = "7320810579";
-  const whatsappLink = `whatsapp://send?phone=${phoneNumber}`;
+  const whatsappLink = `https://wa.me/${phoneNumber}`;
 
   return (
-    <Link to={whatsappLink} className=" m-2 text-success" target="_blank">
-      <i className="fa-brands  fs-4 fa-whatsapp"></i>
+    <Link
+      to={whatsappLink}
+      className={styles.socialIcon}
+      target="_blank"
+      aria-label="WhatsApp"
+    >
+      <FaWhatsapp className={styles.whatsappIcon} />
     </Link>
   );
-};
+}
 
 export function Message() {
   const [name, setName] = useState("");
@@ -27,6 +40,11 @@ export function Message() {
   const navigate = useNavigate();
 
   async function fetchMessage() {
+    if (!name || !email || !message) {
+      toast.error("Please fill all fields");
+      return;
+    }
+
     setIsLoading(true);
     try {
       const response = await axios.post(`${process.env.REACT_APP_API}/mail`, {
@@ -49,104 +67,129 @@ export function Message() {
   }
 
   return (
-    <div className={styles.message_container}>
-      <h5 className="m-2">Message</h5>
+    <div className={styles.messageContainer} data-aos="fade-left">
+      <h3 className={styles.messageTitle}>Send me a message</h3>
 
-      <TextField
-        className={`m-3 ${styles.TextField}`}
-        id="standard-basic"
-        label="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        variant="standard"
-      />
+      <div className={styles.formGroup}>
+        <TextField
+          fullWidth
+          id="name"
+          label="Your Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          variant="outlined"
+          className={styles.inputField}
+        />
+      </div>
 
-      <TextField
-        className={`m-3 text-light ${styles.TextField}`}
-        id="standard-basic"
-        label="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        variant="standard"
-      />
+      <div className={styles.formGroup}>
+        <TextField
+          fullWidth
+          id="email"
+          label="Your Email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          variant="outlined"
+          className={styles.inputField}
+        />
+      </div>
 
-      <TextField
-        className={`m-3 ${styles.TextField}`}
-        id="standard-multiline-static"
-        label="Message"
-        multiline
-        rows={4}
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        variant="standard"
-      />
-      <center>
-        <button
-          onClick={fetchMessage}
-          className={`text-bg-primary p-2 m-2 fw-bold ${styles.submitBtn}`}
-          disabled={isLoading}
-        >
-          {isLoading ? "Sending..." : "Send"} &#10004;
-        </button>
-      </center>
+      <div className={styles.formGroup}>
+        <TextField
+          fullWidth
+          id="message"
+          label="Your Message"
+          multiline
+          rows={4}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          variant="outlined"
+          className={styles.inputField}
+        />
+      </div>
 
-      <Toaster />
+      <button
+        onClick={fetchMessage}
+        className={styles.submitBtn}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          "Sending..."
+        ) : (
+          <>
+            Send Message <FaPaperPlane className={styles.sendIcon} />
+          </>
+        )}
+      </button>
+
+      <Toaster position="top-right" />
     </div>
   );
 }
 
-
-
-
 function Contact() {
   return (
-      <div id="contact" className="main_container">
-        <h2 className="contact_heading" >Contact Me</h2>
-        <div className={styles.contact}>
-          <div className={styles.socialMedia}>
-            <p>Touch on social media</p>
-            <hr />
-            <h6>
-              <i className="fa-solid fa-phone text-primary"></i> +91 7320810579
-            </h6>
-            <h6>
-              <i className="fa-solid fa-envelope text-danger"></i>{" "}
-              rahulkmrgaya21@gmail.com
-            </h6>
-            <Link
-              target="_blank"
-              className="m-2 text-dark fs-4"
-              to={"https://github.com/RahulkrWD"}
-            >
-              <i className="fa-brands fa-square-github"></i>
-            </Link>
-            <Link
-              target="_blank"
-              className="m-2 fs-4"
-              to={"https://www.linkedin.com/in/rahulkmr07"}
-            >
-              <i className="fa-brands fa-linkedin-in"></i>
-            </Link>
-            <Link
-              target="_blank"
-              className="m-2 fs-4"
-              to={"https://www.facebook.com/profile.php?id=100009696459444"}
-            >
-              <i className="fa-brands fa-facebook"></i>
-            </Link>
-            <Link
-              target="_blank"
-              className="m-2 text-danger fs-4"
-              to={`https://www.instagram.com/r_kr07_14/`}
-            >
-              <i className="fa-brands fa-square-instagram"></i>
-            </Link>
-            <Whatsapp />
+    <section id="contact" className={styles.contactSection}>
+      <div className={styles.container}>
+        <h2 className={styles.sectionHeading}>Get In Touch</h2>
+        <p className={styles.sectionSubtitle}>I'd love to hear from you!</p>
+
+        <div className={styles.contactGrid}>
+          <div className={styles.socialContainer} data-aos="fade-right">
+            <h3 className={styles.socialTitle}>Contact Information</h3>
+            <p className={styles.socialDescription}>
+              Feel free to reach out through any of these channels
+            </p>
+
+            <div className={styles.contactInfo}>
+              <div className={styles.contactItem}>
+                <FaPhone className={styles.contactIcon} />
+                <span>+91 7320810579</span>
+              </div>
+
+              <div className={styles.contactItem}>
+                <FaEnvelope className={styles.contactIcon} />
+                <span>rahulkmrgaya21@gmail.com</span>
+              </div>
+            </div>
+
+            <div className={styles.socialIcons}>
+              <Link
+                target="_blank"
+                to="https://github.com/RahulkrWD"
+                className={styles.socialIcon}
+                aria-label="GitHub"
+              >
+                <FaGithub />
+              </Link>
+
+              <Link
+                target="_blank"
+                to="https://www.linkedin.com/in/rahulkmr07"
+                className={styles.socialIcon}
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn />
+              </Link>
+
+              <Link
+                target="_blank"
+                to="https://www.facebook.com/profile.php?id=100009696459444"
+                className={styles.socialIcon}
+                aria-label="Facebook"
+              >
+                <FaFacebook />
+              </Link>
+
+              <Whatsapp />
+            </div>
           </div>
+
           <Message />
         </div>
       </div>
-    
+    </section>
   );
 }
 

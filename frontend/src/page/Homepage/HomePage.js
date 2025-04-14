@@ -1,17 +1,29 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import About from "./About";
 import Skills from "./Skills";
 import Projects from "./Projects";
 import Services from "./Services";
 import Contact from "./contact/Contact";
-import Certificate from "./Certificate";
 import ScrollButton from "../../components/ScrollButton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function HomePage() {
   const [Scroll, setScroll] = useState(false);
-  const sectionsRef = useRef([]);
 
+  // Initialize AOS animation library
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+      offset: 120,
+      delay: 100,
+    });
+  }, []);
+
+  // Handle scroll for scroll-to-top button
   useEffect(() => {
     function handleScroll() {
       if (window.scrollY > window.innerHeight) {
@@ -20,7 +32,6 @@ function HomePage() {
         setScroll(false);
       }
     }
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -28,56 +39,22 @@ function HomePage() {
     };
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate");
-          } else {
-            entry.target.classList.remove("animate");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    sectionsRef.current.forEach((section) => {
-      if (section) observer.observe(section);
-    });
-
-    return () => {
-      sectionsRef.current.forEach((section) => {
-        if (section) observer.unobserve(section);
-      });
-    };
-  }, []);
-
   return (
-    <div>
-      <div className="section" ref={(el) => (sectionsRef.current[0] = el)}>
-        <Header />
-      </div>
-      <div className="section" ref={(el) => (sectionsRef.current[1] = el)}>
-        <About />
-      </div>
-      <div className="section" ref={(el) => (sectionsRef.current[2] = el)}>
-        <Skills />
-      </div>
-      <div className="section" ref={(el) => (sectionsRef.current[3] = el)}>
-        <Projects />
-      </div>
-      <div className="section" ref={(el) => (sectionsRef.current[4] = el)}>
-        <Certificate />
-      </div>
-      <div className="section" ref={(el) => (sectionsRef.current[5] = el)}>
-        <Services />
-      </div>
-      <div className="section" ref={(el) => (sectionsRef.current[6] = el)}>
-        <Contact />
-      </div>
+    <>
+      <Header />
+
+      <About data-aos="fade-up" data-aos-delay="100" />
+
+      <Skills data-aos="fade-up" data-aos-delay="150" />
+
+      <Projects data-aos="fade-up" data-aos-delay="200" />
+
+      <Services data-aos="fade-up" data-aos-delay="250" />
+
+      <Contact data-aos="fade-up" data-aos-delay="300" />
+
       {Scroll && <ScrollButton />}
-    </div>
+    </>
   );
 }
 

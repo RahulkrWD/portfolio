@@ -1,70 +1,158 @@
-import React from "react";
-import styles from "./styles/Projects.module.css";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import {
+  FaExternalLinkAlt,
+  FaTimes,
+  FaLaptopCode,
+  FaShoppingCart,
+  FaChalkboardTeacher,
+  FaCommentAlt,
+} from "react-icons/fa";
+import styles from "./styles/Projects.module.css";
 
-const images = [
+const projects = [
   {
     title: "Teacher Dashboard",
+    icon: <FaChalkboardTeacher className={styles.projectIcon} />,
     src: "./image/teacher_dashboard.png",
-    alt: "Image 1",
+    alt: "Teacher Dashboard",
     live: "https://teacher-dashboard-task.vercel.app/",
-    desc: "The Teacher Dashboard is a web app for managing students, enabling CRUD operations and attendance tracking. Built with ReactJS, Vite, MUI, Node.js, Express.js, and MongoDB, it showcases my skills in creating efficient and user-friendly applications.",
+    desc: "The Teacher Dashboard is a comprehensive web application designed to streamline classroom management, featuring robust student administration with full CRUD (Create, Read, Update, Delete) functionality and efficient attendance tracking. Built with a modern tech stack including ReactJS and Vite for a fast, responsive frontend, Material-UI (MUI) for sleek user interface components, and powered by a Node.js/Express.js backend with MongoDB database, the application demonstrates my ability to develop complete, full-stack solutions.",
+    tech: ["React", "Node.js", "MongoDB", "Material UI"],
   },
   {
-    title: "E-commerce website",
-    src: "https://i.ibb.co/mT01k9B/dep.png",
-    alt: "Image 2",
-    live: "https://dep-com.vercel.app",
-    desc: "Dep.com is a MERN stack e-commerce app with OTP-based verification, product search, sorting, coupon discounts, WhatsApp support, and Razorpay integration. Built using Redux Toolkit, Material-UI, and Bootstrap, it ensures a secure and user-friendly shopping experience, showcasing my skills in developing robust web applications.",
+    title: "Multi-vendor E-commerce",
+    icon: <FaShoppingCart className={styles.projectIcon} />,
+    src: "./image/multi-vendor.png",
+    alt: "E-commerce Platform",
+    live: "https://multi-vendor-eta.vercel.app/index.html",
+    desc: "This project is a multi-vendor e-commerce platform built with HTML, CSS, Bootstrap, and JavaScript for the frontend, and Firebase for real-time database and authentication. The application supports seller and buyer accounts, allowing vendors to create, edit, and delete (CRUD) product listings, while customers can browse products and add items to their cart.",
+    tech: ["JavaScript", "Firebase", "Bootstrap"],
   },
   {
-    title: "Zomato Clone",
-    src: "https://i.ibb.co/9GDF1NV/zomato.png",
-    alt: "Image 3",
-    live: "https://ed-zomato-app.vercel.app/",
-    desc: "The Zomato clone, built with the MERN stack, includes JWT authentication, location-based restaurant search, detailed menus, pagination, and menu filtering. It showcases my skills in creating secure and user-friendly web applications.",
+    title: "Portfolio Creator",
+    icon: <FaLaptopCode className={styles.projectIcon} />,
+    src: "/image/portfolio-creator.png",
+    alt: "Portfolio Creator",
+    live: "https://portfolio-creater-six.vercel.app/",
+    desc: "I developed a fully responsive Portfolio Website Creator using HTML5, CSS3 (Grid/Flexbox), and JavaScript, enabling users to customize their portfolio through an intuitive form with real-time previews. The app dynamically generates a downloadable HTML file with one click, offering personalized styling options like fonts, colors, and layouts.",
+    tech: ["HTML5", "CSS3", "JavaScript"],
   },
   {
-    title: "Weather App",
-    src: "https://i.ibb.co/3cGG12v/weather-app.png",
-    alt: "Image 4",
-    live: "https://verdant-licorice-65c812.netlify.app/",
-    desc: "The Weather App, built with HTML, CSS, JavaScript, and a weather API, delivers real-time updates, forecasts, and location-based conditions. Its responsive design showcases my skills in API integration and creating interactive web applications.",
-  },
-  {
-    title: "Frontend Website",
-    src: "https://i.ibb.co/GHvJfzx/frontend-4.png",
-    alt: "Image 5",
-    live: "https://657c6d2c03d8d22459c0a3c7--snazzy-starlight-1e9cd9.netlify.app/",
-    desc: "This frontend website, built with HTML and CSS, offers a responsive design for an optimal user experience across all devices, showcasing my skills in creating adaptable web interfaces.",
+    title: "Feedback Form",
+    icon: <FaCommentAlt className={styles.projectIcon} />,
+    src: "./image/feedback.png",
+    alt: "Feedback Form",
+    live: "https://feedback2-pearl.vercel.app/",
+    desc: "I created a responsive feedback form using React.js (via CDN links) with a CSS Grid layout that adapts seamlessly to mobile, tablet, and desktop screens. The form collects user input and stores it in Firebase for real-time data management. A toggle button enables switching between dark and light modes.",
+    tech: ["React", "Firebase", "CSS Grid"],
   },
 ];
 
 function Projects() {
+  const [activeModal, setActiveModal] = useState(null);
+  const hoverTimer = useRef(null);
+
+  const handleMouseEnter = (index) => {
+    hoverTimer.current = setTimeout(() => {
+      setActiveModal(index);
+    }, 1000);
+  };
+
+  const handleMouseLeave = () => {
+    clearTimeout(hoverTimer.current);
+  };
+
+  const closeModal = () => {
+    setActiveModal(null);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimer.current) {
+        clearTimeout(hoverTimer.current);
+      }
+    };
+  }, []);
+
   return (
-    <div id="projects" className="main_container">
-      <h2 className="project_heading">Projects</h2>
-      <div className={styles.project_container}>
-        {images.map((item, index) => (
-          <div key={index}>
-            <h4 className={styles.title_heading}>{item.title}</h4>
-            <div className={styles.projectCard}>
-              <img
-                className={styles.projectImage}
-                src={item.src}
-                alt={item.alt}
-              />
-              <div className={styles.projectOverlay}>
-                <p className={styles.desc}>{item.desc}</p>
-                <Link to={item.live} target="_blank">
-                  <i className="fa-solid fa-up-right-from-square"></i>
-                </Link>
-              </div>
+    <section id="projects" className={styles.projectsSection}>
+      <h2 className={styles.skillsHeading}>Projects</h2>
+      <div className={styles.projectsGrid}>
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className={styles.projectCard}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className={styles.projectHeader}>
+              {project.icon}
+              <h3 className={styles.projectTitle}>{project.title}</h3>
+            </div>
+            <img
+              src={project.src}
+              alt={project.alt}
+              className={styles.projectImage}
+            />
+            <div className={styles.projectFooter}>
+              <Link
+                to={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.projectLink}
+              >
+                <FaExternalLinkAlt /> View Live
+              </Link>
             </div>
           </div>
         ))}
       </div>
-    </div>
+
+      {activeModal !== null && (
+        <div className={styles.modalOverlay} onClick={closeModal}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className={styles.closeButton}
+              onClick={closeModal}
+              aria-label="Close modal"
+            >
+              <FaTimes />
+            </button>
+            <div className={styles.modalHeader}>
+              {projects[activeModal].icon}
+              <h3>{projects[activeModal].title}</h3>
+            </div>
+            <img
+              src={projects[activeModal].src}
+              alt={projects[activeModal].alt}
+              className={styles.modalImage}
+            />
+            <div className={styles.techStack}>
+              {projects[activeModal].tech.map((tech, i) => (
+                <span key={i} className={styles.techPill}>
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <p className={styles.modalDescription}>
+              {projects[activeModal].desc}
+            </p>
+            <Link
+              to={projects[activeModal].live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.modalLink}
+            >
+              <FaExternalLinkAlt /> Visit Project
+            </Link>
+          </div>
+        </div>
+      )}
+    </section>
   );
 }
 

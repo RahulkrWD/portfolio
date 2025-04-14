@@ -1,78 +1,242 @@
-.heading {
-  text-align: center;
-  border-bottom: 2px solid red;
-  width: max-content;
+.contactSection {
+  padding: 80px 0;
+
 }
-.contact {
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sectionHeading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #2d3748;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 50px;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.socialContainer {
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.socialContainer:hover {
+  transform: translateY(-5px);
+}
+
+.socialTitle {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #2d3748;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.socialTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+}
+
+.socialDescription {
+  color: #4a5568;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.contactInfo {
+  margin-bottom: 30px;
+}
+
+.contactItem {
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
   align-items: center;
-  color: white;
+  margin-bottom: 15px;
+  color: #4a5568;
+  transition: transform 0.3s ease;
 }
 
-.socialMedia,
-.message {
-  padding: 15px 20px;
-  margin: 20px 0;
+.contactItem:hover {
+  transform: translateX(5px);
 }
 
-.message {
-  text-align: center;
-  box-shadow: inset 2px 2px 7px black, inset -2px -2px 7px black;
-  border-radius: 10px;
+.contactIcon {
+  margin-right: 15px;
+  font-size: 1.2rem;
+  color: #4299e1;
 }
-.TextField {
-  width: 90%;
-  border-radius: 7px;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+
+.socialIcons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
-.submitBtn {
-  box-shadow: 1px 1px 3px #3e3e3e;
-  border: transparent;
-  border-radius: 6px;
+
+.socialIcon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edf2f7;
+  color: #4a5568;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
 }
-.message_container {
-  max-width: 1300px;
-  width: 400px;
-  height: fit-content;
-  border-radius: 7px;
-  padding: 15px;
-  margin: 20px;
-  box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.1), -10px 10px 4px rgba(0, 0, 0, 0.1);
+
+.socialIcon:hover {
+  background: #4299e1;
+  color: white;
+  transform: translateY(-3px);
 }
 
-/* send.js */
+.whatsappIcon {
+  color: #25D366;
+}
 
-.sendIcons {
-  width: 120px;
-  height: 120px;
+/* Message Form Styles */
+.messageContainer {
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.messageTitle {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: #2d3748;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.messageTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.inputField {
+  width: 100%;
+}
+
+.inputField .MuiOutlinedInput-root {
+  border-radius: 8px;
+}
+
+.inputField .MuiOutlinedInput-input {
+  padding: 12px 14px;
+}
+
+.submitBtn {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 40px;
-  font-weight: bolder;
-  border-radius: 50%;
-  opacity: 0;
-  animation: show 1s ease forwards;
-  transform: scale(0.2);
-  transition: all 1s ease;
+  gap: 10px;
+  margin-top: 10px;
 }
-.text {
-  opacity: 0;
-  animation: show 1s ease forwards;
-  transform: scale(0.2);
-  transition: all 1s ease;
+
+.submitBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
 }
-@keyframes show {
+
+.submitBtn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.sendIcon {
+  font-size: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   to {
     opacity: 1;
-    transform: scale(1.1);
+    transform: translateY(0);
   }
 }
-@media (max-width: 850px) {
-  .message_container {
-    width: 400px;
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .socialContainer, .messageContainer {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactSection {
+    padding: 60px 0;
+  }
+  
+  .sectionHeading {
+    font-size: 2rem;
+  }
+  
+  .sectionSubtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .socialIcons {
+    justify-content: center;
+  }
+  
+  .contactItem {
+    font-size: 0.9rem;
+  }
+  
+  .submitBtn {
+    width: 100%;
+    justify-content: center;
   }
 }
