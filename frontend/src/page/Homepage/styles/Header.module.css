@@ -26,7 +26,6 @@
 
 .hello {
   font-size: 1.2rem;
-  color: #4a5568;
   margin-bottom: 10px;
   opacity: 0;
   animation: fadeInUp 0.8s ease-out 0.2s forwards;
@@ -40,7 +39,6 @@
 .adminName {
   font-size: 3rem;
   font-weight: 800;
-  color: #2d3748;
   line-height: 1.2;
   margin: 0;
   transform: translateY(100%);
@@ -54,7 +52,6 @@
 
 .animation {
   font-size: 1.5rem;
-  color: #4a5568;
   font-style: italic;
   font-weight: 500;
   display: inline-block;

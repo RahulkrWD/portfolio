@@ -12,7 +12,6 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 50px;
-  color: #2c3e50;
   position: relative;
 }
 
@@ -60,13 +59,13 @@
 
 .iconBadges i {
   font-size: 2rem;
-  color: #2c3e50;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .iconBadges i:hover {
   transform: translateY(-5px);
   color: #3498db;
+
 }
 
 .aboutContent {
@@ -107,6 +106,8 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px #0b0a0a1a;
   transition: transform 0.3s ease;
+  background-color: #2575fc;
+  color: white;
 }
 
 .highlightItem:hover {
@@ -115,7 +116,6 @@
 }
 
 .highlightItem i {
-  color: #3498db;
   font-size: 1.2rem;
 }
 

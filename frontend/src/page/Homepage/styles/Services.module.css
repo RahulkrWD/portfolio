@@ -12,13 +12,11 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 15px;
-  color: #2d3748;
 }
 
 .sectionSubtitle {
   text-align: center;
   font-size: 1.1rem;
-  color: #4a5568;
   margin-bottom: 50px;
   max-width: 700px;
   margin-left: auto;
@@ -85,12 +83,10 @@
 
 .serviceTitle {
   font-size: 1.4rem;
-  color: #2d3748;
   margin: 0;
 }
 
 .serviceDescription {
-  color: #4a5568;
   line-height: 1.6;
   margin-bottom: 25px;
 }
@@ -120,8 +116,7 @@
 }
 
 .featureItem span {
-  color: #4a5568;
-  font-size: 0.95rem;
+  font-size: 0.80rem;
 }
 
 .ctaButton {

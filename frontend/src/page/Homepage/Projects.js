@@ -1,16 +1,32 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   FaExternalLinkAlt,
-  FaTimes,
   FaLaptopCode,
   FaShoppingCart,
   FaChalkboardTeacher,
   FaCommentAlt,
+  FaMedkit,
 } from "react-icons/fa";
 import styles from "./styles/Projects.module.css";
 
 const projects = [
+  {
+    title: "Prescription and Medication Management Tool",
+    icon: <FaMedkit className={styles.projectIcon} />,
+    src: "./image/medication.png",
+    alt: "Prescription Management Tool",
+    live: "https://your-live-demo-link.com",
+    desc: "A fully responsive Prescription and Medication Management Tool built with React + Vite for blazing-fast performance. Features Firebase for real-time database & authentication, Bootstrap + Redux Toolkit for seamless state management & UI, Framer Motion for smooth animations, and Ant Design for UI components with guided tour onboarding.",
+    tech: [
+      "React",
+      "Firebase",
+      "Redux Toolkit",
+      "Bootstrap",
+      "Framer Motion",
+      "Ant Design",
+    ],
+  },
   {
     title: "Teacher Dashboard",
     icon: <FaChalkboardTeacher className={styles.projectIcon} />,
@@ -35,6 +51,7 @@ const projects = [
     src: "/image/portfolio-creator.png",
     alt: "Portfolio Creator",
     live: "https://portfolio-creater-six.vercel.app/",
+    github: "#",
     desc: "I developed a fully responsive Portfolio Website Creator using HTML5, CSS3 (Grid/Flexbox), and JavaScript, enabling users to customize their portfolio through an intuitive form with real-time previews. The app dynamically generates a downloadable HTML file with one click, offering personalized styling options like fonts, colors, and layouts.",
     tech: ["HTML5", "CSS3", "JavaScript"],
   },
@@ -44,114 +61,73 @@ const projects = [
     src: "./image/feedback.png",
     alt: "Feedback Form",
     live: "https://feedback2-pearl.vercel.app/",
+    github: "#",
     desc: "I created a responsive feedback form using React.js (via CDN links) with a CSS Grid layout that adapts seamlessly to mobile, tablet, and desktop screens. The form collects user input and stores it in Firebase for real-time data management. A toggle button enables switching between dark and light modes.",
     tech: ["React", "Firebase", "CSS Grid"],
   },
 ];
 
 function Projects() {
-  const [activeModal, setActiveModal] = useState(null);
-  const hoverTimer = useRef(null);
-
-  const handleMouseEnter = (index) => {
-    hoverTimer.current = setTimeout(() => {
-      setActiveModal(index);
-    }, 1000);
-  };
-
-  const handleMouseLeave = () => {
-    clearTimeout(hoverTimer.current);
-  };
-
-  const closeModal = () => {
-    setActiveModal(null);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (hoverTimer.current) {
-        clearTimeout(hoverTimer.current);
-      }
-    };
-  }, []);
-
   return (
-    <section id="projects" className={styles.projectsSection}>
-      <h2 className={styles.skillsHeading}>Projects</h2>
-      <div className={styles.projectsGrid}>
+    <section id="projects" className={`container ${styles.projectsSection}`}>
+      <div className={styles.sectionHeader}>
+        <h2 className={styles.sectionTitle}>My Projects</h2>
+        <p className={styles.sectionSubtitle}>Things I've built so far</p>
+        <div className={styles.underline}></div>
+      </div>
+
+      <div className={styles.projectsContainer}>
         {projects.map((project, index) => (
           <div
             key={index}
-            className={styles.projectCard}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
+            className={`${styles.projectItem} ${
+              index % 2 === 0 ? styles.leftImage : styles.rightImage
+            }`}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
           >
-            <div className={styles.projectHeader}>
-              {project.icon}
-              <h3 className={styles.projectTitle}>{project.title}</h3>
+            <div className={styles.projectImageContainer}>
+              <div className={styles.imageWrapper}>
+                <img
+                  src={project.src}
+                  alt={project.alt}
+                  className={styles.projectImage}
+                />
+                <div className={styles.imageOverlay}></div>
+              </div>
             </div>
-            <img
-              src={project.src}
-              alt={project.alt}
-              className={styles.projectImage}
-            />
-            <div className={styles.projectFooter}>
-              <Link
-                to={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.projectLink}
-              >
-                <FaExternalLinkAlt /> View Live
-              </Link>
+
+            <div className={styles.projectContent}>
+              <div className={styles.projectHeader}>
+                <p className={styles.projectNumber}>0{index + 1}</p>
+                {project.icon}
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+              </div>
+
+              <p className={styles.projectDescription}>{project.desc}</p>
+
+              <div className={styles.techStack}>
+                {project.tech.map((tech, i) => (
+                  <span key={i} className={styles.techPill}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className={styles.projectLinks}>
+                <Link
+                  to={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectLink}
+                >
+                  <FaExternalLinkAlt /> Live Demo
+                </Link>
+              </div>
             </div>
           </div>
         ))}
       </div>
-
-      {activeModal !== null && (
-        <div className={styles.modalOverlay} onClick={closeModal}>
-          <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className={styles.closeButton}
-              onClick={closeModal}
-              aria-label="Close modal"
-            >
-              <FaTimes />
-            </button>
-            <div className={styles.modalHeader}>
-              {projects[activeModal].icon}
-              <h3>{projects[activeModal].title}</h3>
-            </div>
-            <img
-              src={projects[activeModal].src}
-              alt={projects[activeModal].alt}
-              className={styles.modalImage}
-            />
-            <div className={styles.techStack}>
-              {projects[activeModal].tech.map((tech, i) => (
-                <span key={i} className={styles.techPill}>
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <p className={styles.modalDescription}>
-              {projects[activeModal].desc}
-            </p>
-            <Link
-              to={projects[activeModal].live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.modalLink}
-            >
-              <FaExternalLinkAlt /> Visit Project
-            </Link>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

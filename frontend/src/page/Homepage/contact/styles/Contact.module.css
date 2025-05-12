@@ -1,8 +1,8 @@
+
 .contactSection {
-  padding: 80px 0;
+  padding: 0 0 100px 0;
 
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -13,13 +13,11 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 15px;
-  color: #2d3748;
 }
 
 .sectionSubtitle {
   text-align: center;
   font-size: 1.1rem;
-  color: #4a5568;
   margin-bottom: 50px;
 }
 
@@ -30,6 +28,7 @@
 }
 
 .socialContainer {
+  background-color: var(--bg-color);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -43,7 +42,6 @@
 .socialTitle {
   font-size: 1.5rem;
   margin-bottom: 15px;
-  color: #2d3748;
   position: relative;
   padding-bottom: 10px;
 }
@@ -59,7 +57,6 @@
 }
 
 .socialDescription {
-  color: #4a5568;
   margin-bottom: 25px;
   line-height: 1.6;
 }
@@ -72,7 +69,6 @@
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-  color: #4a5568;
   transition: transform 0.3s ease;
 }
 
@@ -100,7 +96,6 @@
   align-items: center;
   justify-content: center;
   background: #edf2f7;
-  color: #4a5568;
   font-size: 1.2rem;
   transition: all 0.3s ease;
 }
@@ -125,7 +120,6 @@
 .messageTitle {
   font-size: 1.5rem;
   margin-bottom: 25px;
-  color: #2d3748;
   position: relative;
   padding-bottom: 10px;
 }
