@@ -16,7 +16,7 @@ const projects = [
     icon: <FaMedkit className={styles.projectIcon} />,
     src: "./image/medication.png",
     alt: "Prescription Management Tool",
-    live: "https://your-live-demo-link.com",
+    live: "https://medication-management-tool.vercel.app/",
     desc: "A fully responsive Prescription and Medication Management Tool built with React + Vite for blazing-fast performance. Features Firebase for real-time database & authentication, Bootstrap + Redux Toolkit for seamless state management & UI, Framer Motion for smooth animations, and Ant Design for UI components with guided tour onboarding.",
     tech: [
       "React",
