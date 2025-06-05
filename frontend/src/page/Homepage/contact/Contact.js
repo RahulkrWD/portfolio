@@ -32,89 +32,106 @@ export function Whatsapp() {
 }
 
 export function Message() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [sendMessage, setSendMessage] = useState({
+    name: "",
+    email: "",
+    message: "",
+    isLoading: false
+  });
+
+  function handleInput(e) {
+    const {name, value} = e.target;
+    setSendMessage(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  }
 
   const navigate = useNavigate();
 
-  async function fetchMessage() {
-    if (!name || !email || !message) {
+  async function fetchMessage(e) {
+    e.preventDefault(); // Prevent default form submission
+    
+    if (!sendMessage.name || !sendMessage.email || !sendMessage.message) {
       toast.error("Please fill all fields");
       return;
     }
 
-    setIsLoading(true);
+    setSendMessage(prev => ({...prev, isLoading: true}));
+
     try {
       const response = await axios.post(`${process.env.REACT_APP_API}/mail`, {
-        name,
-        email,
-        message,
+        name: sendMessage.name,
+        email: sendMessage.email,
+        message: sendMessage.message
       });
-      if (response.data.success) {
-        toast.success(response.data.message);
+      
+      if (response.data.message) { // Changed from success to message check
+        toast.success("Message sent successfully!");
         navigate("/send");
-        sessionStorage.setItem("email", email);
+        sessionStorage.setItem("email", sendMessage.email);
       } else {
-        toast.error(response.data.message);
+        toast.error("Failed to send message");
       }
     } catch (err) {
       toast.error("Server problem");
     } finally {
-      setIsLoading(false);
+      setSendMessage(prev => ({...prev, isLoading: false}));
     }
   }
 
   return (
-    <div className={styles.messageContainer} data-aos="fade-left">
+    <form onSubmit={fetchMessage} className={styles.messageContainer} data-aos="fade-left">
       <h3 className={styles.messageTitle}>Send me a message</h3>
 
       <div className={styles.formGroup}>
         <TextField
           fullWidth
-          id="name"
+          name="name" // Changed from id to name
           label="Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={sendMessage.name}
+          onChange={handleInput}
           variant="outlined"
           className={styles.inputField}
+          required
         />
       </div>
 
       <div className={styles.formGroup}>
         <TextField
           fullWidth
-          id="email"
+          name="email" // Changed from id to name
           label="Your Email"
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={sendMessage.email}
+          onChange={handleInput}
           variant="outlined"
           className={styles.inputField}
+          required
         />
       </div>
 
       <div className={styles.formGroup}>
         <TextField
           fullWidth
-          id="message"
+          name="message" // Changed from id to name
           label="Your Message"
           multiline
           rows={4}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={sendMessage.message}
+          onChange={handleInput}
           variant="outlined"
           className={styles.inputField}
+          required
         />
       </div>
 
       <button
-        onClick={fetchMessage}
+        type="submit"
         className={styles.submitBtn}
-        disabled={isLoading}
+        disabled={sendMessage.isLoading}
       >
-        {isLoading ? (
+        {sendMessage.isLoading ? (
           "Sending..."
         ) : (
           <>
@@ -124,7 +141,7 @@ export function Message() {
       </button>
 
       <Toaster position="top-right" />
-    </div>
+    </form>
   );
 }
 

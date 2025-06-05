@@ -7,12 +7,17 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", function (req, res) {
-  res.send({ message: "Hello world" });
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.Email,
+    pass: process.env.Pass,
+  },
 });
-
 // nodemailer
-app.post("/mail", function (req, res) {
+app.post("/mail", async (req, res) =>{
   const { name, email, message } = req.body;
   if (!name) {
     return res.send({ success: false, message: "Name is required" });
@@ -23,30 +28,19 @@ app.post("/mail", function (req, res) {
   if (!message) {
     return res.send({ success: false, message: "Message is required" });
   }
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.Email,
-      pass: process.env.Pass,
-    },
-  });
-  const mailOptions = {
+  try {
+  await transporter.sendMail({
     from: process.env.Email,
     to: process.env.Email,
     subject: `New Contact ${name}`,
-    text: `Sender Email: ${email}\n\n${message}`,
-  };
-  transporter.sendMail(mailOptions, (err, info) => {
-    if (err) {
-      return res.status(500).send({
-        success: false,
-        message: "Email not sent",
-        error: err.message,
-      });
-    }
-    res.send({ success: true, message: "Email sent", info });
+    text: `Sender Email: ${email}\n\n${message}`, // plain‑text body
   });
-});
+  res.status(200).json({ message: "Email send successfull" });
+} catch (error) {
+  res.status(404).json({ message: "Something went wrong, " });
+}
+ });
+
 
 const PORT = process.env.PORT || 3600;
 app.listen(PORT, () => {
