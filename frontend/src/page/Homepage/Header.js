@@ -45,7 +45,7 @@ function Header() {
 
             <Link
               className={styles.linkPdf}
-              to="/rahul-cv1.pdf"
+              to="/rahul-9.pdf"
               target="_blank"
             >
               <FaDownload className={styles.downloadIcon} />

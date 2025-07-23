@@ -1,14 +1,13 @@
-
-
 .scroll-to-top-btn {
   display: none;
   transition: opacity 0.3s ease;
 }
 
 .scroll-to-top-btn.show {
-  display: flex; 
+  display: flex;
   opacity: 1;
 }
+
 .scroll-to-top-btn:hover {
   background-color: #0056b3;
 }
@@ -22,15 +21,19 @@ body::-webkit-scrollbar {
 [data-aos-delay="100"] {
   transition-delay: 100ms;
 }
+
 [data-aos-delay="150"] {
   transition-delay: 150ms;
 }
+
 [data-aos-delay="200"] {
   transition-delay: 200ms;
 }
+
 [data-aos-delay="250"] {
   transition-delay: 250ms;
 }
+
 [data-aos-delay="300"] {
   transition-delay: 300ms;
 }
@@ -91,6 +94,7 @@ html {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-main, body {
+main,
+body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
