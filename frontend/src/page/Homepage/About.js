@@ -3,7 +3,10 @@ import styles from "./styles/About.module.css";
 
 function About() {
   return (
-    <section id="about" className={styles.aboutSection}>
+    <section
+      id="about"
+      className={`${styles.aboutSection} py-5 px-3 px-md-5 container`}
+    >
       <div className={styles.container}>
         <h2 className={styles.sectionHeading}>About Me</h2>
         <div className={styles.aboutGrid}>
@@ -26,20 +29,13 @@ function About() {
           <div className={styles.aboutContent}>
             <p className={styles.aboutText}>
               <span className={styles.firstLetter}>P</span>assionate Full Stack
-              Developer specializing in modern web technologies with expertise
-              in the MERN stack (MongoDB, Express.js, React.js, Node.js). I
-              build robust, scalable applications with intuitive interfaces that
-              deliver exceptional user experiences. My approach combines
-              technical precision with creative problem-solving to transform
-              ideas into functional, high-performance web solutions.
+              Developer skilled in the MERN stack (MongoDB, Express.js,
+              React.js, Node.js). I build scalable web applications with clean,
+              responsive UIs and strong backend integration. I enjoy turning
+              ideas into user-friendly, high-performance solutions while staying
+              updated with modern web development trends.
             </p>
-            <p className={styles.aboutText}>
-              With strong foundations in both frontend and backend development,
-              I particularly excel at creating interactive UIs with React while
-              ensuring seamless integration with server-side functionality. I
-              stay current with industry trends and best practices, continuously
-              refining my skills to implement cutting-edge solutions.
-            </p>
+
             <div className={styles.aboutHighlights}>
               <div className={styles.highlightItem}>
                 <i className="fa-solid fa-laptop-code"></i>

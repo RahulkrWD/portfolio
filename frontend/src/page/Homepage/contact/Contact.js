@@ -36,14 +36,14 @@ export function Message() {
     name: "",
     email: "",
     message: "",
-    isLoading: false
+    isLoading: false,
   });
 
   function handleInput(e) {
-    const {name, value} = e.target;
-    setSendMessage(prev => ({
+    const { name, value } = e.target;
+    setSendMessage((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   }
 
@@ -51,22 +51,23 @@ export function Message() {
 
   async function fetchMessage(e) {
     e.preventDefault(); // Prevent default form submission
-    
+
     if (!sendMessage.name || !sendMessage.email || !sendMessage.message) {
       toast.error("Please fill all fields");
       return;
     }
 
-    setSendMessage(prev => ({...prev, isLoading: true}));
+    setSendMessage((prev) => ({ ...prev, isLoading: true }));
 
     try {
       const response = await axios.post(`${process.env.REACT_APP_API}/mail`, {
         name: sendMessage.name,
         email: sendMessage.email,
-        message: sendMessage.message
+        message: sendMessage.message,
       });
-      
-      if (response.data.message) { // Changed from success to message check
+
+      if (response.data.message) {
+        // Changed from success to message check
         toast.success("Message sent successfully!");
         navigate("/send");
         sessionStorage.setItem("email", sendMessage.email);
@@ -76,12 +77,16 @@ export function Message() {
     } catch (err) {
       toast.error("Server problem");
     } finally {
-      setSendMessage(prev => ({...prev, isLoading: false}));
+      setSendMessage((prev) => ({ ...prev, isLoading: false }));
     }
   }
 
   return (
-    <form onSubmit={fetchMessage} className={styles.messageContainer} data-aos="fade-left">
+    <form
+      onSubmit={fetchMessage}
+      className={styles.messageContainer}
+      data-aos="fade-left"
+    >
       <h3 className={styles.messageTitle}>Send me a message</h3>
 
       <div className={styles.formGroup}>

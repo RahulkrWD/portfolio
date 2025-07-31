@@ -55,10 +55,6 @@ function HomePage() {
         <Projects data-aos="fade-up" data-aos-delay="200" />
       </div>
 
-      <div id="contact">
-        <Contact data-aos="fade-up" data-aos-delay="250" />
-      </div>
-
       <Services data-aos="fade-up" data-aos-delay="250" />
 
       <Contact data-aos="fade-up" data-aos-delay="300" />
