@@ -16,8 +16,12 @@ const transporter = nodemailer.createTransport({
     pass: process.env.Pass,
   },
 });
+
+app.get("/", async (req, res) => {
+  res.status(200).json({ message: "Test Route", success: true });
+});
 // nodemailer
-app.post("/mail", async (req, res) =>{
+app.post("/mail", async (req, res) => {
   const { name, email, message } = req.body;
   if (!name) {
     return res.send({ success: false, message: "Name is required" });
@@ -29,18 +33,17 @@ app.post("/mail", async (req, res) =>{
     return res.send({ success: false, message: "Message is required" });
   }
   try {
-  await transporter.sendMail({
-    from: process.env.Email,
-    to: process.env.Email,
-    subject: `New Contact ${name}`,
-    text: `Sender Email: ${email}\n\n${message}`, // plain‑text body
-  });
-  res.status(200).json({ message: "Email send successfull" });
-} catch (error) {
-  res.status(404).json({ message: "Something went wrong, " });
-}
- });
-
+    await transporter.sendMail({
+      from: process.env.Email,
+      to: process.env.Email,
+      subject: `New Contact ${name}`,
+      text: `Sender Email: ${email}\n\n${message}`, // plain‑text body
+    });
+    res.status(200).json({ message: "Email send successfull" });
+  } catch (error) {
+    res.status(404).json({ message: "Something went wrong, " });
+  }
+});
 
 const PORT = process.env.PORT || 3600;
 app.listen(PORT, () => {
