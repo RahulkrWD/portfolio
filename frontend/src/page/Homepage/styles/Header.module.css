@@ -1,16 +1,28 @@
 .header {
-  padding: 80px 0;
-  min-height: 90vh;
+  padding: 120px 0 80px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  width: 100%;
+.textContent {
+  padding-right: 2rem;
+}
+
+.textContent {
+  padding-right: 2rem;
+}
+
+.introText {
+  color: #8892b0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 1.5rem 0;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.6s forwards;
 }
 
 .content {
@@ -22,13 +34,18 @@
 
 .textContent {
   position: relative;
+  z-index: 2;
+  max-width: 600px;
 }
 
 .hello {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-bottom: 10px;
   opacity: 0;
-  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  animation: fadeInUp 0.8s ease-out forwards;
+  color: #64ffda;
+  letter-spacing: 1px;
+  font-weight: 500;
 }
 
 .adminNames {
@@ -37,12 +54,17 @@
 }
 
 .adminName {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: 4rem;
+  font-weight: bold;
   line-height: 1.2;
   margin: 0;
   transform: translateY(100%);
   animation: slideUp 0.8s ease-out 0.4s forwards;
+  background: linear-gradient(45deg, #ccd6f6, #8892b0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .animatedText {
@@ -51,12 +73,14 @@
 }
 
 .animation {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-style: italic;
   font-weight: 500;
   display: inline-block;
   transform: translateY(100%);
   animation: slideUp 0.8s ease-out 0.6s forwards;
+  color: #8892b0;
+  letter-spacing: 0.5px;
 }
 
 .skillsIcons {
@@ -86,35 +110,80 @@
   font-size: 1.2rem;
 }
 
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
 .linkPdf {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: #4299e1;
-  color: white;
-  padding: 12px 25px;
-  border-radius: 30px;
+  gap: 12px;
+  background: transparent;
+  color: #64ffda;
+  padding: 15px 30px;
+  border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out 1s forwards;
+  border: 2px solid #64ffda;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 15px;
+}
+
+.socialLink {
+  color: #8892b0;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #8892b0;
+}
+
+.socialLink:hover {
+  color: #64ffda;
+  border-color: #64ffda;
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
 }
 
 .linkPdf:hover {
-  background: #3182ce;
+  background: rgba(100, 255, 218, 0.2);
   transform: translateY(-3px);
-  box-shadow: 0 10px 15px rgba(66, 153, 225, 0.3);
+  box-shadow: 0 0 25px rgba(100, 255, 218, 0.3);
 }
 
 .downloadIcon {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.linkPdf:hover .downloadIcon {
+  transform: translateY(-2px);
 }
 
 .imageContainer {
   position: relative;
   opacity: 0;
-  animation: fadeInRight 0.8s ease-out 0.4s forwards;
+  animation: fadeInRight 0.8s ease-out 0.4s forwards, float 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(100, 255, 218, 0.2));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
 .header_image {
@@ -192,41 +261,121 @@
   }
 }
 
+.visible .linkPdf,
+.visible .socialLink {
+  animation: fadeInUp 0.8s ease-out 1s forwards;
+  opacity: 0;
+}
+
+.visible .socialLinks a:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+@media (max-width: 991px) {
+  .textContent {
+    padding-right: 0;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .introText {
+    max-width: 600px;
+    margin: 1.5rem auto;
+  }
+
+  .buttonGroup,
+  .skillsIcons {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
-    padding: 60px 0;
+    padding: 100px 0 60px;
     min-height: auto;
   }
-  
+
+  .content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .textContent {
+    order: -1;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .hello {
+    font-size: 1.2rem;
+  }
+
   .adminName {
-    font-size: 2rem;
+    font-size: 2.8rem;
   }
-  
+
   .animation {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
-  
-  .skillsIcons {
-    flex-wrap: wrap;
+
+  .buttonGroup {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .linkPdf {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+
+  .socialLinks {
+    gap: 20px;
+  }
+
+  .socialLink {
+    width: 45px;
+    height: 45px;
+    font-size: 1.6rem;
+  }
+
+  .imageContainer {
+    max-width: 80%;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 480px) {
-  .adminName {
-    font-size: 1.8rem;
+  .header {
+    padding: 80px 0 40px;
   }
-  
+
   .hello {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
-  
+
+  .adminName {
+    font-size: 2.2rem;
+  }
+
+  .animation {
+    font-size: 1.2rem;
+  }
+
   .linkPdf {
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 0.9rem;
   }
-  
-  .iconWithText {
-    padding: 6px 12px;
-    font-size: 0.9rem;
+
+  .socialLink {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+
+  .imageContainer {
+    max-width: 90%;
   }
 }

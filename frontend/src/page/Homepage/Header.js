@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles/Header.module.css";
-import { Link } from "react-router-dom";
-import { FaDownload, FaCode, FaServer, FaPalette } from "react-icons/fa";
+import { FaDownload, FaCode, FaServer } from "react-icons/fa";
 
 function Header() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
   useEffect(() => {
     // Trigger animation on mount
     const elements = document.querySelectorAll(`.${styles.animateOnLoad}`);
@@ -16,10 +20,14 @@ function Header() {
 
   return (
     <header id="header" className={styles.header}>
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <div className={`${styles.textContent} ${styles.animateOnLoad}`}>
-            <h5 className={styles.hello}>Hello,</h5>
+      <div className="container">
+        <div className="row align-items-center">
+          <div
+            className={`col-lg-6 col-md-12 ${styles.textContent} ${
+              isVisible ? styles.visible : ""
+            }`}
+          >
+            <h5 className={styles.hello}>Hi there 👋, I'm</h5>
             <div className={styles.adminNames}>
               <h1 className={styles.adminName}>I'm Rahul Kumar</h1>
             </div>
@@ -37,28 +45,24 @@ function Header() {
                 <FaServer className={styles.icon} />
                 <span>Backend</span>
               </div>
-              <div className={styles.iconWithText}>
-                <FaPalette className={styles.icon} />
-                <span>UI/UX</span>
-              </div>
             </div>
 
-            <Link
-              className={styles.linkPdf}
-              to="/rahul-9.pdf"
-              target="_blank"
-            >
-              <FaDownload className={styles.downloadIcon} />
-              Download Resume
-            </Link>
+            <div className={styles.buttonGroup}>
+              <a className={styles.linkPdf} href="/rahul-9.pdf" download>
+                <FaDownload className={styles.downloadIcon} />
+                Download Resume
+              </a>
+            </div>
           </div>
 
-          <div className={`${styles.imageContainer} ${styles.animateOnLoad}`}>
-            <img
-              className={styles.header_image}
-              src="/image/image.svg"
-              alt="Developer Illustration"
-            />
+          <div className="col-lg-6 col-md-12">
+            <div className={`${styles.imageContainer} ${styles.animateOnLoad}`}>
+              <img
+                className={styles.header_image}
+                src="/image/background-image-removebg-preview.png"
+                alt="Developer Illustration"
+              />
+            </div>
           </div>
         </div>
       </div>

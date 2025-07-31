@@ -43,11 +43,21 @@ function HomePage() {
     <>
       <Header />
 
-      <About data-aos="fade-up" data-aos-delay="100" />
+      <div id="about">
+        <About data-aos="fade-up" data-aos-delay="100" />
+      </div>
 
-      <Skills data-aos="fade-up" data-aos-delay="150" />
+      <div id="skills">
+        <Skills data-aos="fade-up" data-aos-delay="150" />
+      </div>
 
-      <Projects data-aos="fade-up" data-aos-delay="200" />
+      <div id="projects">
+        <Projects data-aos="fade-up" data-aos-delay="200" />
+      </div>
+
+      <div id="contact">
+        <Contact data-aos="fade-up" data-aos-delay="250" />
+      </div>
 
       <Services data-aos="fade-up" data-aos-delay="250" />
 

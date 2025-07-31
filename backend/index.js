@@ -41,7 +41,9 @@ app.post("/mail", async (req, res) => {
     });
     res.status(200).json({ message: "Email send successfull" });
   } catch (error) {
-    res.status(404).json({ message: "Something went wrong, " });
+    res
+      .status(404)
+      .json({ message: "Something went wrong", success: false, error });
   }
 });
 

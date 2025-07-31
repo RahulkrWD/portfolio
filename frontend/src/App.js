@@ -4,6 +4,7 @@ import PopUp from "./page/PopUp";
 import PageNotFound from "./page/PageNotFound";
 import HomePage from "./page/Homepage/HomePage";
 import Send from "./page/Homepage/contact/Send";
+import Navbar from "./components/Navbar";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -17,6 +18,7 @@ function ScrollToTop() {
 function App() {
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<PopUp />} />
         <Route path="*" element={<PageNotFound />} />
