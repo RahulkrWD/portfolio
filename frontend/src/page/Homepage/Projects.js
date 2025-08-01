@@ -9,7 +9,7 @@ import {
   FaChalkboardTeacher,
   FaGithub
 } from "react-icons/fa";
-import { Modal } from "react-bootstrap";
+import { Modal, Container, Row, Col } from "react-bootstrap";
 import "animate.css";
 import styles from "./styles/Projects.module.css";
 
@@ -87,9 +87,17 @@ function Projects() {
   const [showModal, setShowModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
+  let hoverTimer = null;
+
   const handleCardHover = (project) => {
-       setSelectedProject(project);
+    hoverTimer = setTimeout(() => {
+      setSelectedProject(project);
       setShowModal(true);
+    }, 1500);
+  };
+
+  const handleCardLeave = () => {
+    clearTimeout(hoverTimer);
   };
 
   const handleCloseModal = () => {
@@ -98,25 +106,32 @@ function Projects() {
   };
 
   return (
-    <section id="projects" className="container py-5">
-      <div className="text-center mb-5 animate__animated animate__fadeIn">
-        <h2 className="fw-bold display-5">My Projects</h2>
-        <p className="lead text-muted">Things I've built so far</p>
-        <div className="mx-auto bg-primary" style={{ width: '80px', height: '4px' }}></div>
-      </div>
+    <section id="projects" className={styles.projectSection}>
+      <Container>
+        <div className="text-center mb-5 animate__animated animate__fadeIn">
+          <h2 className="fw-bold display-5">My Projects</h2>
+          <p className="lead text-muted">Things I've built so far</p>
+          <div className="mx-auto bg-primary" style={{ width: '80px', height: '4px' }}></div>
+        </div>
 
-      <div className="row g-4">
+        <Row className="g-4">
         {projects.map((project, index) => (
-          <div 
+          <Col 
             key={index} 
-            className="col-md-6 col-lg-4 animate__animated animate__fadeInUp"
+            xs={12} sm={6} lg={4}
+            className="animate__animated animate__fadeInUp"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <div 
-              className="card h-100 shadow-sm border-0 overflow-hidden project-card"
-              onClick={() => handleCardHover(project)}
+              className={`card h-100 overflow-hidden ${styles.projectCard}`}
+              onMouseEnter={() => handleCardHover(project)}
+              onMouseLeave={handleCardLeave}
+              onClick={() => {
+                setSelectedProject(project);
+                setShowModal(true);
+              }}
             >
-              <div className="card-img-top overflow-hidden" style={{ height: '200px' }}>
+              <div className={`${styles.projectImage} card-img-top overflow-hidden`} style={{ height: '200px' }}>
                 <img 
                   src={project.src} 
                   alt={project.alt}
@@ -125,15 +140,15 @@ function Projects() {
               </div>
               <div className="card-body">
                 <div className="d-flex align-items-center mb-3">
-                  {project.icon}
-                  <h5 className="card-title mb-0 ms-2">{project.title}</h5>
+                  <div className={styles.projectIcon}>{project.icon}</div>
+                  <h5 className={`card-title mb-0 ms-2 ${styles.projectTitle}`}>{project.title}</h5>
                 </div>
                 <div className="mt-auto d-flex justify-content-between">
                   <Link 
                     to={project.live} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="btn btn-outline-primary btn-sm"
+                    className={`${styles.projectButton} ${styles.liveButton}`}
                     onClick={(e) => e.stopPropagation()}
                   >
                     <FaExternalLinkAlt className="me-1" /> Live Demo
@@ -143,7 +158,7 @@ function Projects() {
                     to={project.github} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="btn btn-outline-secondary btn-sm"
+                    className={`${styles.projectButton} ${styles.githubButton}`}
                     onClick={(e) => e.stopPropagation()}
                   >
                     <FaGithub className="me-1" /> GitHub
@@ -153,73 +168,77 @@ function Projects() {
               <div className="card-footer bg-transparent">
                 <div className="d-flex flex-wrap gap-2">
                   {project.tech.slice(0, 3).map((tech, i) => (
-                    <span key={i} className="badge bg-light text-dark">
+                    <span key={i} className={styles.techBadge}>
                       {tech}
                     </span>
                   ))}
                   {project.tech.length > 3 && (
-                    <span className="badge bg-light text-dark">+{project.tech.length - 3}</span>
+                    <span className={styles.techBadge}>+{project.tech.length - 3}</span>
                   )}
                 </div>
               </div>
             </div>
-          </div>
+          </Col>
         ))}
-      </div>
+        </Row>
+      </Container>
 
       {/* Project Details Modal */}
-      <Modal show={showModal} onHide={handleCloseModal} size="md" centered>
-        <Modal.Header className="border-0">
+      <Modal 
+          show={showModal} 
+          onHide={handleCloseModal} 
+          size="md" 
+          centered 
+          dialogClassName={`${styles.modalContent} ${showModal ? styles.show : ''}`}
+          onEntering={(node) => node.classList.add(styles.show)}
+          onExiting={(node) => node.classList.remove(styles.show)}
+        >
+        <Modal.Header className={styles.modalHeader}>
           <Modal.Title className="d-flex align-items-center">
-            {selectedProject?.icon}
-            <span className="ms-2 text-dark fs-5">{selectedProject?.title}</span>
+            <div className={styles.projectIcon}>{selectedProject?.icon}</div>
+            <span className={`ms-2 fs-5 ${styles.modalTitle}`}>{selectedProject?.title}</span>
           </Modal.Title>
           <button 
             type="button" 
-            className="btn-close" 
+            className={`btn-close ${styles.closeButton}`} 
             onClick={handleCloseModal}
             aria-label="Close"
           ></button>
         </Modal.Header>
-        <Modal.Body>
-          <div>
-               <div className="text-secondary">
-              <img 
-                src={selectedProject?.src} 
-                alt={selectedProject?.alt}
-                className="img-fluid rounded"
-              />
-            </div>
-           
-              <p className={`mb-2 text-secondary ${styles.model_desc}`}>{selectedProject?.desc}</p>
-              
-              <h6 className="fw-bold mb-2 text-dark">Technologies Used:</h6>
-              <div className="d-flex flex-wrap gap-2 mb-4">
-                {selectedProject?.tech.map((tech, i) => (
-                  <span key={i} className="badge bg-primary">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="d-flex justify-content-between">
-<Link 
+        <Modal.Body className={styles.modalBody}>
+          <img 
+            src={selectedProject?.src} 
+            alt={selectedProject?.alt}
+            className={styles.modalImage}
+          />
+          <p className={styles.model_desc}>{selectedProject?.desc}</p>
+          
+          <div className={styles.modalTechStack}>
+            {selectedProject?.tech.map((tech, index) => (
+              <span key={index} className={styles.modalTechBadge}>
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className={styles.modalButtons}>
+            <Link 
               to={selectedProject?.live} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn btn-outline-primary btn-sm"
-              >
-                <FaExternalLinkAlt className="me-2" /> Visit Live Demo
-              </Link>
-              <Link 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`${styles.projectButton} ${styles.liveButton}`}
+            >
+              <FaExternalLinkAlt className="me-1" /> Live Demo
+            </Link>
+
+            <Link 
               to={selectedProject?.github} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn btn-outline-secondary btn-sm"
-              >
-                <FaGithub className="me-2" /> GitHub
-              </Link>
-              </div>
-              
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`${styles.projectButton} ${styles.githubButton}`}
+            >
+              <FaGithub className="me-1" /> GitHub
+            </Link>
           </div>
         </Modal.Body>
       </Modal>

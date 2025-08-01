@@ -1,11 +1,16 @@
 .aboutSection {
   padding: 80px 0;
+  background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
+  position: relative;
+  overflow: hidden;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .sectionHeading {
@@ -13,15 +18,36 @@
   font-size: 2.5rem;
   margin-bottom: 50px;
   position: relative;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 0.8s ease forwards;
 }
 
 .sectionHeading::after {
   content: '';
   display: block;
-  width: 80px;
+  width: 0;
   height: 4px;
   background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
   margin: 15px auto 0;
+  animation: expandWidth 1s ease-out 0.5s forwards;
+}
+
+@keyframes expandWidth {
+  to {
+    width: 80px;
+  }
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .aboutGrid {
@@ -29,11 +55,33 @@
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .imageContainer {
   position: relative;
   text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.imageContainer:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .aboutImage {
@@ -57,15 +105,20 @@
   gap: 15px;
 }
 
-.iconBadges i {
+.techIcon {
   font-size: 2rem;
-  transition: transform 0.3s ease, color 0.3s ease;
+  color: #3498db;
+  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.iconBadges i:hover {
-  transform: translateY(-5px);
-  color: #3498db;
-
+.techIcon:hover {
+  transform: translateY(-5px) rotate(10deg);
+  color: #2575fc;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 15px rgba(37, 117, 252, 0.2);
 }
 
 .aboutContent {
@@ -100,19 +153,33 @@
 .highlightItem {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 15px;
-  border-radius: 8px;
+  gap: 15px;
+  padding: 15px 20px;
+  border-radius: 12px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px #0b0a0a1a;
-  transition: transform 0.3s ease;
-  background-color: #2575fc;
-  color: white;
+  background: rgba(37, 117, 252, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  cursor: pointer;
 }
 
 .highlightItem:hover {
+  transform: translateY(-5px);
+  background: rgba(37, 117, 252, 0.2);
+  box-shadow: 0 8px 15px rgba(37, 117, 252, 0.2);
+}
 
-  transform: translateY(-3px);
+.highlightIcon {
+  font-size: 1.5rem;
+  color: #2575fc;
+  transition: all 0.3s ease;
+}
+
+.highlightItem:hover .highlightIcon {
+  transform: rotate(360deg);
+  color: #6a11cb;
 }
 
 .highlightItem i {
@@ -121,17 +188,31 @@
 
 /* Responsive Design */
 @media (max-width: 992px) {
-  .aboutGrid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .aboutSection {
+    padding: 60px 0;
   }
-  
+
   .imageContainer {
-    order: -1;
+    max-width: 400px;
+    margin: 0 auto 30px;
+    backdrop-filter: none;
   }
-  
+
   .aboutImage {
-    max-width: 300px;
+    max-width: 100%;
+  }
+
+  .techIcon {
+    font-size: 1.8rem;
+    padding: 8px;
+  }
+
+  .aboutContent {
+    text-align: center;
+  }
+
+  .aboutText {
+    text-align: left;
   }
 }
 
@@ -140,30 +221,63 @@
     font-size: 2rem;
     margin-bottom: 30px;
   }
-  
+
   .aboutText {
     font-size: 1rem;
+    line-height: 1.5;
   }
-  
+
   .firstLetter {
     font-size: 2rem;
+    margin-right: 5px;
   }
-  
-  .iconBadges i {
-    font-size: 1.8rem;
+
+  .techIcon {
+    font-size: 1.6rem;
+    padding: 6px;
+  }
+
+  .highlightItem {
+    padding: 12px 15px;
+    gap: 10px;
+  }
+
+  .highlightIcon {
+    font-size: 1.3rem;
   }
 }
 
 @media (max-width: 480px) {
   .aboutSection {
-    padding: 60px 0;
+    padding: 40px 0;
   }
-  
+
+  .sectionHeading {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  .imageContainer {
+    padding: 15px;
+    margin-bottom: 25px;
+  }
+
   .aboutHighlights {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
-  
+
   .highlightItem {
     padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .iconBadges {
+    gap: 10px;
+  }
+
+  .techIcon {
+    font-size: 1.4rem;
+    padding: 5px;
   }
 }

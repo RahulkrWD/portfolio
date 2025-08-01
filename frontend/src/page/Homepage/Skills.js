@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles/Skills.module.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 const SKILLS = [
   { name: "HTML", icon: "fa-brands fa-html5", color: "#E34F26" },
@@ -22,23 +23,31 @@ const SKILLS = [
 function Skills() {
   return (
     <section id="skills" className={styles.skillsSection}>
-      <div className={styles.container}>
-        <h2 className={styles.skillsHeading}>My Skills</h2>
-        <div className={styles.skillsContainer}>
+      <Container>
+        <h2 className={styles.skillsHeading} data-aos="fade-up">My Skills</h2>
+        <Row className={`g-4 justify-content-center ${styles.skillsContainer}`}>
           {SKILLS.map((skill, index) => (
-            <div
-              key={index}
-              className={styles.skillCard}
-              style={{ "--skill-color": skill.color }}
-            >
-              <div className={styles.skillIcon}>
-                <i className={`${skill.icon} ${styles.fontAwesomeIcon}`}></i>
+            <Col xs={6} sm={4} md={3} lg={2} key={index} className="d-flex justify-content-center">
+              <div
+                className={styles.skillCard}
+                style={{ "--skill-color": skill.color }}
+                data-aos="zoom-in"
+                data-aos-delay={index * 100}
+              >
+                <div className={styles.skillIcon}>
+                  <i className={`${skill.icon} ${styles.fontAwesomeIcon}`}></i>
+                </div>
+                <div className={styles.skillContent}>
+                  <span className={styles.skillName}>{skill.name}</span>
+                  <div className={styles.skillLevel}>
+                    <div className={styles.skillLevelBar} style={{ width: "85%" }}></div>
+                  </div>
+                </div>
               </div>
-              <span className={styles.skillName}>{skill.name}</span>
-            </div>
+            </Col>
           ))}
-        </div>
-      </div>
+        </Row>
+      </Container>
     </section>
   );
 }

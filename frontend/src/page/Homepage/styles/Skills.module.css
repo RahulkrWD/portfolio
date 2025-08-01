@@ -1,12 +1,7 @@
 .skillsSection {
   padding: 80px 0;
   width: 100%;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
 }
 
 .skillsHeading {
@@ -14,6 +9,9 @@
   font-size: 2.5rem;
   margin-bottom: 50px;
   position: relative;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .skillsHeading::after {
@@ -23,89 +21,162 @@
   height: 4px;
   background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
   margin: 15px auto 0;
+  border-radius: 2px;
+  animation: expandWidth 1s ease-out forwards;
 }
 
-.skillsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 25px;
-  justify-items: center;
+@keyframes expandWidth {
+  from { width: 0; }
+  to { width: 80px; }
 }
 
 .skillCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 120px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  padding: 15px;
-  text-align: center;
+  position: relative;
+  width: 100%;
+  min-height: 160px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.skillCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
 }
 
 .skillCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: var(--skill-color);
+}
+
+.skillCard:hover::before {
+  left: 100%;
 }
 
 .skillIcon {
   font-size: 2.5rem;
   margin-bottom: 15px;
   color: var(--skill-color);
+  transition: all 0.4s ease;
+}
+
+.skillCard:hover .skillIcon {
+  transform: scale(1.2);
+}
+
+.skillContent {
+  text-align: center;
 }
 
 .skillName {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  color: var(--skill-color);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.skillLevel {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.skillLevelBar {
+  height: 100%;
+  background: var(--skill-color);
+  border-radius: 2px;
+  transform-origin: left;
+  animation: fillBar 1.5s ease-out forwards;
+}
+
+@keyframes fillBar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .skillsContainer {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 15px;
-  }
-  
+@media (max-width: 992px) {
   .skillCard {
-    width: 100px;
-    height: 100px;
+    min-height: 140px;
+    padding: 15px;
   }
-  
+
+  .skillIcon {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+
+  .skillName {
+    font-size: 0.9rem;
+  }
+
+  .skillLevel {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skillsHeading {
+    font-size: 2.2rem;
+  }
+
+  .skillCard {
+    min-height: 130px;
+    backdrop-filter: none;
+  }
+
   .skillIcon {
     font-size: 2rem;
   }
-  
+
   .skillName {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   .skillsHeading {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 30px;
   }
-  
-  .skillsContainer {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: 10px;
-  }
-  
+
   .skillCard {
-    width: 80px;
-    height: 80px;
-    padding: 10px;
+    min-height: 120px;
+    padding: 12px;
   }
-  
+
   .skillIcon {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 8px;
   }
-  
+
   .skillName {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+
+  .skillLevel {
+    height: 3px;
+    margin-top: 6px;
   }
 }

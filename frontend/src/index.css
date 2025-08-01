@@ -43,7 +43,7 @@ html {
 }
 
 body {
-  background: linear-gradient(to bottom, #0a192f, #112240, #233554);
+  background: linear-gradient(to bottom, #0a192f, #112240, #233554) !important;
   color: #f7fafc;
   position: relative;
   overflow-x: hidden;
