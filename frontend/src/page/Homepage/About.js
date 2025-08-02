@@ -13,7 +13,7 @@ function About() {
           <Col lg={6} className={styles.imageContainer} data-aos="fade-right">
             <img
               className={styles.aboutImage}
-              src="/image/new_dp.jpg"
+              src="/image/formal-photo.jpg"
               alt="Profile"
             />
             <div className={styles.iconBadges}>
