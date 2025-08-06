@@ -48,7 +48,8 @@ function Header() {
             </div>
 
             <div className={styles.buttonGroup}>
-              <a className={styles.linkPdf} href="/Rahul_FSD.pdf" download>
+              <a className={styles.linkPdf} href="https://drive.google.com/file/d/1_G9eZ56C3SB7Us5Ls-7QXSC-PDlwq_f0/view?usp=drive_link" target="_blank">
+
                 <FaDownload className={styles.downloadIcon} />
                 Download Resume
               </a>
