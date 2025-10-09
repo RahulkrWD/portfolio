@@ -15,6 +15,9 @@ const transporter = nodemailer.createTransport({
     user: process.env.Email,
     pass: process.env.Pass,
   },
+  tls: {
+    rejectUnauthorized: false
+  }
 });
 
 app.get("/", async (req, res) => {
@@ -36,14 +39,27 @@ app.post("/mail", async (req, res) => {
     await transporter.sendMail({
       from: process.env.Email,
       to: process.env.Email,
-      subject: `New Contact ${name}`,
-      text: `Sender Email: ${email}\n\n${message}`, // plain‑text body
+      subject: `New Contact from ${name}`,
+      text: `Sender Email: ${email}\n\n${message}`,
+      html: `
+        <h3>New Contact Form Submission</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `
     });
-    res.status(200).json({ message: "Email send successfull" });
+    res.status(200).json({ 
+      message: "Email sent successfully", 
+      success: true 
+    });
   } catch (error) {
-    res
-      .status(404)
-      .json({ message: "Something went wrong", success: false, error });
+    console.error("Email sending error:", error);
+    res.status(500).json({ 
+      message: "Failed to send email", 
+      success: false, 
+      error: error.message 
+    });
   }
 });
 

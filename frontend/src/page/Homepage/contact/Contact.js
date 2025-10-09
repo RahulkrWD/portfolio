@@ -60,22 +60,22 @@ export function Message() {
     setSendMessage((prev) => ({ ...prev, isLoading: true }));
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API}/mail`, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/mail`, {
         name: sendMessage.name,
         email: sendMessage.email,
         message: sendMessage.message,
       });
 
-      if (response.data.message) {
-        // Changed from success to message check
+      if (response.data.success) {
         toast.success("Message sent successfully!");
         navigate("/send");
         sessionStorage.setItem("email", sendMessage.email);
       } else {
-        toast.error("Failed to send message");
+        toast.error(response.data.message || "Failed to send message");
       }
     } catch (err) {
-      toast.error("Server problem");
+      console.error("Email send error:", err);
+      toast.error(err.response?.data?.message || "Server problem");
     } finally {
       setSendMessage((prev) => ({ ...prev, isLoading: false }));
     }
@@ -155,8 +155,6 @@ function Contact() {
     <section id="contact" className={styles.contactSection}>
       <div className={styles.container}>
         <h2 className={styles.sectionHeading}>Get In Touch</h2>
-        <p className={styles.sectionSubtitle}>I'd love to hear from you!</p>
-
         <div className={styles.contactGrid}>
           <div className={styles.socialContainer} data-aos="fade-right">
             <h3 className={styles.socialTitle}>Contact Information</h3>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   FaExternalLinkAlt,
@@ -7,9 +7,11 @@ import {
   FaSuitcaseRolling,
   FaBuilding,
   FaChalkboardTeacher,
-  FaGithub
+  FaGithub,
+  FaChevronLeft,
+  FaChevronRight
 } from "react-icons/fa";
-import { Modal, Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "animate.css";
 import styles from "./styles/Projects.module.css";
 
@@ -84,164 +86,161 @@ const projects = [
 ];
 
 function Projects() {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const maxIndex = projects.length - 1;
+  const sectionRef = useRef(null);
 
-  let hoverTimer = null;
-
-  const handleCardHover = (project) => {
-    hoverTimer = setTimeout(() => {
-      setSelectedProject(project);
-      setShowModal(true);
-    }, 1500);
+  const nextSlide = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex(prev => prev < maxIndex ? prev + 1 : 0); // Loop back to first
+    setTimeout(() => setIsTransitioning(false), 600);
   };
 
-  const handleCardLeave = () => {
-    clearTimeout(hoverTimer);
+  const prevSlide = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex(prev => prev > 0 ? prev - 1 : maxIndex); // Loop to last
+    setTimeout(() => setIsTransitioning(false), 600);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    setSelectedProject(null);
-  };
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [currentIndex, isAutoPlaying]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (event.key === 'ArrowRight') {
+        nextSlide();
+      } else if (event.key === ' ') {
+        event.preventDefault();
+        setIsAutoPlaying(prev => !prev);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+    return () => document.removeEventListener('keydown', handleKeyPress);
+  }, []);
+
+  const currentProject = projects[currentIndex];
 
   return (
-    <section id="projects" className={styles.projectSection}>
-      <Container>
-        <div className="text-center mb-5 animate__animated animate__fadeIn">
-          <h2 className="fw-bold display-5">My Projects</h2>
-          <p className="lead text-muted">Things I've built so far</p>
-          <div className="mx-auto bg-primary" style={{ width: '80px', height: '4px' }}></div>
+    <section 
+      id="projects" 
+      className={styles.projectSection}
+      ref={sectionRef}
+      onMouseEnter={() => setIsAutoPlaying(false)}
+      onMouseLeave={() => setIsAutoPlaying(true)}
+    >
+      <Container fluid className={styles.fullContainer}>
+        {/* Section Header with Title on Left */}
+        <div className={styles.sectionHeader}>
+          <div className={styles.headerContent}>
+            <div className={styles.titleSection}>
+              <h2 className={styles.sectionTitle}>My Projects</h2>
+              <p className={styles.sectionSubtitle}>Things I've built so far</p>
+              <div className={styles.titleUnderline}></div>
+            </div>
+            <div className={styles.projectCounter}>
+              <span className={styles.currentNumber}>{String(currentIndex + 1).padStart(2, '0')}</span>
+              <span className={styles.separator}>/</span>
+              <span className={styles.totalNumber}>{String(projects.length).padStart(2, '0')}</span>
+             
+            </div>
+          </div>
         </div>
 
-        <Row className="g-4">
-        {projects.map((project, index) => (
-          <Col 
-            key={index} 
-            xs={12} sm={6} lg={4}
-            className="animate__animated animate__fadeInUp"
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            <div 
-              className={`card h-100 overflow-hidden ${styles.projectCard}`}
-              onMouseEnter={() => handleCardHover(project)}
-              onMouseLeave={handleCardLeave}
-              onClick={() => {
-                setSelectedProject(project);
-                setShowModal(true);
-              }}
+        <div className={styles.projectContainer}>
+          {/* Navigation Buttons */}
+          <div className={styles.navigationButtons}>
+            <button 
+              className={`${styles.navButton} ${styles.prevButton}`}
+              onClick={prevSlide}
+              disabled={isTransitioning}
+              aria-label="Previous project"
             >
-              <div className={`${styles.projectImage} card-img-top overflow-hidden`} style={{ height: '200px' }}>
-                <img 
-                  src={project.src} 
-                  alt={project.alt}
-                  className="w-100 h-100 object-fit-cover"
-                />
-              </div>
-              <div className="card-body">
-                <div className="d-flex align-items-center mb-3">
-                  <div className={styles.projectIcon}>{project.icon}</div>
-                  <h5 className={`card-title mb-0 ms-2 ${styles.projectTitle}`}>{project.title}</h5>
-                </div>
-                <div className="mt-auto d-flex justify-content-between">
-                  <Link 
-                    to={project.live} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={`${styles.projectButton} ${styles.liveButton}`}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <FaExternalLinkAlt className="me-1" /> Live Demo
-                  </Link>
+              <FaChevronLeft />
+            </button>
+            <button 
+              className={`${styles.navButton} ${styles.nextButton}`}
+              onClick={nextSlide}
+              disabled={isTransitioning}
+              aria-label="Next project"
+            >
+              <FaChevronRight />
+            </button>
+          </div>
 
-                  <Link 
-                    to={project.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={`${styles.projectButton} ${styles.githubButton}`}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <FaGithub className="me-1" /> GitHub
-                  </Link>
+          {/* Single Project Display */}
+          <div className={styles.singleProjectContainer}>
+            <div className={`${styles.projectCard} ${isTransitioning ? styles.transitioning : ''}`}>
+              <div className={styles.projectImageSection}>
+                <img 
+                  src={currentProject.src} 
+                  alt={currentProject.alt}
+                  className={styles.projectImage}
+                />
+                <div className={styles.projectOverlay}>
+                  <div className={styles.projectIcon}>
+                    {currentProject.icon}
+                  </div>
                 </div>
               </div>
-              <div className="card-footer bg-transparent">
-                <div className="d-flex flex-wrap gap-2">
-                  {project.tech.slice(0, 3).map((tech, i) => (
-                    <span key={i} className={styles.techBadge}>
-                      {tech}
-                    </span>
-                  ))}
-                  {project.tech.length > 3 && (
-                    <span className={styles.techBadge}>+{project.tech.length - 3}</span>
-                  )}
+              
+              <div className={styles.projectContentSection}>
+                <h3 className={styles.projectTitle}>{currentProject.title}</h3>
+                <p className={styles.projectDescription}>{currentProject.desc}</p>
+                
+                <div className={styles.techStackSection}>
+                  <h4 className={styles.techStackTitle}>Tech Stack:</h4>
+                  <div className={styles.techStack}>
+                    {currentProject.tech.map((tech, techIndex) => (
+                      <span key={techIndex} className={styles.techItem}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className={styles.projectActions}>
+                  <Link 
+                    to={currentProject.live} 
+                    className={styles.actionButton}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaExternalLinkAlt className={styles.actionIcon} />
+                    Live Preview
+                  </Link>
+                  <Link 
+                    to={currentProject.github} 
+                    className={`${styles.actionButton} ${styles.codeButton}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaGithub className={styles.actionIcon} />
+                    View Code
+                  </Link>
                 </div>
               </div>
             </div>
-          </Col>
-        ))}
-        </Row>
+          </div>
+
+         
+        </div>
       </Container>
-
-      {/* Project Details Modal */}
-      <Modal 
-          show={showModal} 
-          onHide={handleCloseModal} 
-          size="md" 
-          centered 
-          dialogClassName={`${styles.modalContent} ${showModal ? styles.show : ''}`}
-          onEntering={(node) => node.classList.add(styles.show)}
-          onExiting={(node) => node.classList.remove(styles.show)}
-        >
-        <Modal.Header className={styles.modalHeader}>
-          <Modal.Title className="d-flex align-items-center">
-            <div className={styles.projectIcon}>{selectedProject?.icon}</div>
-            <span className={`ms-2 fs-5 ${styles.modalTitle}`}>{selectedProject?.title}</span>
-          </Modal.Title>
-          <button 
-            type="button" 
-            className={`btn-close ${styles.closeButton}`} 
-            onClick={handleCloseModal}
-            aria-label="Close"
-          ></button>
-        </Modal.Header>
-        <Modal.Body className={styles.modalBody}>
-          <img 
-            src={selectedProject?.src} 
-            alt={selectedProject?.alt}
-            className={styles.modalImage}
-          />
-          <p className={styles.model_desc}>{selectedProject?.desc}</p>
-          
-          <div className={styles.modalTechStack}>
-            {selectedProject?.tech.map((tech, index) => (
-              <span key={index} className={styles.modalTechBadge}>
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          <div className={styles.modalButtons}>
-            <Link 
-              to={selectedProject?.live} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={`${styles.projectButton} ${styles.liveButton}`}
-            >
-              <FaExternalLinkAlt className="me-1" /> Live Demo
-            </Link>
-
-            <Link 
-              to={selectedProject?.github} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={`${styles.projectButton} ${styles.githubButton}`}
-            >
-              <FaGithub className="me-1" /> GitHub
-            </Link>
-          </div>
-        </Modal.Body>
-      </Modal>
     </section>
   );
 }
