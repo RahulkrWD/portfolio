@@ -7,6 +7,7 @@ import {
   FaBars,
   FaLaptopCode,
   FaClipboardCheck,
+  FaBriefcase,
 } from "react-icons/fa";
 import "./Navbar.css";
 
@@ -77,6 +78,14 @@ const Navbar = () => {
                 onClick={() => scrollToSection("projects")}
               >
                 <FaCode className="nav-icon" /> Projects
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                className="nav-link"
+                onClick={() => scrollToSection("experience")}
+              >
+                <FaBriefcase className="nav-icon" /> Experience
               </button>
             </li>
             <li className="nav-item">

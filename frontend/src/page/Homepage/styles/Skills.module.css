@@ -1,5 +1,5 @@
 .skillsSection {
-  padding: 80px 0;
+  padding: var(--section-padding) 0;
   width: 100%;
   background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
 }
@@ -26,8 +26,13 @@
 }
 
 @keyframes expandWidth {
-  from { width: 0; }
-  to { width: 80px; }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 80px;
+  }
 }
 
 .skillCard {
@@ -50,12 +55,10 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
+  background: linear-gradient(120deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
   transition: 0.5s;
 }
 
@@ -78,6 +81,13 @@
 
 .skillCard:hover .skillIcon {
   transform: scale(1.2);
+}
+
+.reactIcon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  color: var(--skill-color);
 }
 
 .skillContent {
@@ -110,8 +120,13 @@
 }
 
 @keyframes fillBar {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
 }
 
 /* Responsive Design */

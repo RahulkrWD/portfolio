@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles/Services.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SectionHeading from "../../components/SectionHeading";
 import {
   faCode,
   faShoppingCart,
@@ -56,10 +57,10 @@ function Services() {
   return (
     <section id="services" className={styles.servicesSection}>
       <div className={styles.container}>
-        <h2 className={styles.sectionHeading}>My Services</h2>
-        <p className={styles.sectionSubtitle}>
-          Solutions tailored to your business needs
-        </p>
+        <SectionHeading
+          title="My Services"
+          subtitle="Solutions tailored to your business needs"
+        />
 
         <div className={styles.servicesGrid}>
           {services.map((service, index) => (

@@ -1,9 +1,585 @@
+/* Projects section */
+.projectSection {
+  background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
+  padding: var(--section-padding) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.fullContainer {
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  margin-bottom: 24px;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 6px;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  margin-bottom: 28px;
+}
+
+.tab {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #a8b2d1;
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+.tab:hover {
+  color: #e6f1ff;
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.tabActive {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #f9fafb;
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
+}
+
+/* Cards layout */
+.projectGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.projectCard {
+  flex: 1 1 300px;
+  max-width: 360px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.23), transparent 50%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.2), transparent 50%),
+    rgba(15, 23, 42, 0.98);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(100, 255, 218, 0.4);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.9);
+}
+
+.projectHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 8px;
+}
+
+.projectIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.9);
+  color: #3b82f6;
+}
+
+.projectTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: #e6f1ff;
+}
+
+.projectImageSection {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.06);
+}
+
+.projectOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.05), rgba(15, 23, 42, 0.9));
+  opacity: 0;
+  transform: translateY(14px);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px 14px;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.projectCard:hover .projectOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projectDescription {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #e5e7eb;
+}
+
+.projectContentSection {
+  padding: 14px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.techStackSection {
+  margin-top: 4px;
+}
+
+.techStackTitle {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e6f1ff;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.techItem {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  color: #a8b2d1;
+  background: rgba(100, 255, 218, 0.06);
+  font-size: 0.72rem;
+  font-weight: 500;
+  user-select: none;
+  transition: all 0.25s ease;
+}
+
+.techItem:hover {
+  border-color: rgba(100, 255, 218, 0.6);
+  background: rgba(100, 255, 218, 0.14);
+  color: #e6f1ff;
+}
+
+.projectActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.actionButton {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.liveButton {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #f9fafb;
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.35);
+}
+
+.liveButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px rgba(59, 130, 246, 0.5);
+  color: #ffffff;
+}
+
+.codeButton {
+  background: transparent;
+  color: #cbd5e1;
+  border-color: rgba(148, 163, 184, 0.8);
+}
+
+.codeButton:hover {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(148, 163, 184, 1);
+  transform: translateY(-1px);
+  color: #e5e7eb;
+}
+
+.actionIcon {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 992px) {
+  .projectGrid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projectSection {
+    padding: var(--section-padding-md) 0;
+  }
+
+  .tabs {
+    justify-content: center;
+  }
+
+  .projectCard {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectSection {
+    padding: var(--section-padding-sm) 0;
+  }
+
+  .projectImageSection {
+    height: 180px;
+  }
+
+  .projectTitle {
+    font-size: 0.95rem;
+  }
+
+  .projectDescription {
+    font-size: 0.78rem;
+  }
+}
+
 /* Projects Section */
 .projectSection {
- background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
+  background: linear-gradient(135deg,
+      rgba(10, 25, 47, 0.9),
+      rgba(10, 25, 47, 0.95));
+  padding: var(--section-padding) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.fullContainer {
+  max-width: 1160px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  margin-bottom: 24px;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+/* Tabs */
+.tabs {
+  display: inline-flex;
+  gap: 10px;
+  padding: 6px;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  margin-bottom: 28px;
+}
+
+.tab {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #a8b2d1;
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+.tab:hover {
+  color: #e6f1ff;
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.tabActive {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #f9fafb;
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
+}
+
+/* Grid */
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.projectCard {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: linear-gradient(145deg,
+      rgba(15, 23, 42, 0.9),
+      rgba(15, 23, 42, 0.98));
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(100, 255, 218, 0.4);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.9);
+}
+
+.projectImageSection {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.06);
+}
+
+.projectOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(59, 130, 246, 0.1),
+      rgba(129, 140, 248, 0.25));
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 10px 12px;
+}
+
+.projectIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.9);
+  color: #3b82f6;
+}
+
+.projectContentSection {
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.projectTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+  color: #e6f1ff;
+}
+
+.projectDescription {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+/* Tech stack */
+.techStackSection {
+  margin-top: 6px;
+}
+
+.techStackTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e6f1ff;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.techItem {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  color: #a8b2d1;
+  background: rgba(100, 255, 218, 0.06);
+  font-size: 0.72rem;
+  font-weight: 500;
+  user-select: none;
+  transition: all 0.25s ease;
+}
+
+.techItem:hover {
+  border-color: rgba(100, 255, 218, 0.6);
+  background: rgba(100, 255, 218, 0.14);
+  color: #e6f1ff;
+}
+
+/* Actions */
+.projectActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.actionButton {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.liveButton {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #f9fafb;
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.35);
+}
+
+.liveButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px rgba(59, 130, 246, 0.5);
+  color: #ffffff;
+}
+
+.codeButton {
+  background: transparent;
+  color: #cbd5e1;
+  border-color: rgba(148, 163, 184, 0.8);
+}
+
+.codeButton:hover {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(148, 163, 184, 1);
+  transform: translateY(-1px);
+  color: #e5e7eb;
+}
+
+.actionIcon {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 992px) {
+  .fullContainer {
+    max-width: 960px;
+  }
+
+  .projectGrid {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projectSection {
+    padding: var(--section-padding-md) 0;
+  }
+
+  .tabs {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .projectGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .projectSection {
+    padding: var(--section-padding-sm) 0;
+  }
+
+  .projectImageSection {
+    height: 170px;
+  }
+
+  .projectContentSection {
+    padding: 14px 14px 14px;
+  }
+
+  .projectTitle {
+    font-size: 1rem;
+  }
+
+  .projectDescription {
+    font-size: 0.8rem;
+  }
+}
+
+/* Projects Section */
+.projectSection {
+  background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
   /* color: #f7fafc; */
   min-height: 100vh;
-  padding: 80px 0;
+  padding: var(--section-padding) 0;
   position: relative;
   overflow: hidden;
 }
@@ -135,10 +711,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.7;
     transform: scale(1.2);
@@ -147,9 +726,12 @@
 
 /* Enhanced pulse animation for better visibility */
 @keyframes glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
   }
+
   50% {
     box-shadow: 0 0 16px rgba(16, 185, 129, 0.6);
   }
@@ -158,6 +740,7 @@
 .autoPlayDot.playing {
   animation: pulse 2s infinite, glow 2s infinite;
 }
+
 /* Project Container */
 .projectContainer {
   position: relative;
@@ -334,6 +917,7 @@
 .projectContentSection {
   padding: 20px;
 }
+
 .projectHeader {
   display: flex;
   align-items: center;
@@ -357,7 +941,7 @@
 .projectDescription {
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #64748b;
+  color: #cbd5e1;
   margin-bottom: 20px;
   font-weight: 400;
 }
@@ -367,10 +951,11 @@
   margin-bottom: 20px;
 }
 
-.techTitle {
+.techTitle,
+.techStackTitle {
   font-size: 1rem;
   font-weight: 600;
-  color: #d4ddeb;
+  color: #e6f1ff;
   margin-bottom: 12px;
 }
 
@@ -380,19 +965,25 @@
   gap: 8px;
 }
 
-.techBadge {
+.techBadge,
+.techItem {
   padding: 6px 12px;
-  color: #a4bddf;
-  border-radius: 20px;
+  border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  color: #a8b2d1;
+  background: rgba(100, 255, 218, 0.08);
   transition: all 0.3s ease;
+  user-select: none;
 }
 
-.techBadge:hover {
-  background: #e2e8f0;
+.techBadge:hover,
+.techItem:hover {
   transform: translateY(-1px);
+  border-color: rgba(100, 255, 218, 0.5);
+  background: rgba(100, 255, 218, 0.14);
+  color: #e6f1ff;
 }
 
 /* Project Actions */
@@ -479,38 +1070,38 @@
     padding: 30px 15px;
     min-height: 450px;
   }
-  
+
   .navButton {
     width: 55px;
     height: 55px;
     font-size: 1.3rem;
   }
-  
+
   .prevButton {
     left: -70px;
   }
-  
+
   .nextButton {
     right: -70px;
   }
-  
+
   .projectCard {
     max-width: 700px;
     min-height: 380px;
   }
-  
+
   .projectImageSection {
     height: 190px;
   }
 }
-  
-  .sectionTitle {
-    font-size: 3rem;
-  }
-  
-  .projectCounter {
-    font-size: 1.8rem;
-  }
+
+.sectionTitle {
+  font-size: 3rem;
+}
+
+.projectCounter {
+  font-size: 1.8rem;
+}
 
 @media (max-width: 992px) {
   .headerContent {
@@ -520,70 +1111,70 @@
     gap: 20px;
     text-align: center;
   }
-  
+
   .projectContainer {
     max-width: 800px;
     min-height: 400px;
     padding: 25px 15px;
   }
-  
+
   .navButton {
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
   }
-  
+
   .prevButton {
     left: -60px;
   }
-  
+
   .nextButton {
     right: -60px;
   }
-  
+
   .titleSection {
     text-align: center;
   }
-  
+
   .projectCard {
     max-width: 600px;
     min-height: 360px;
   }
-  
+
   .projectImageSection {
     height: 170px;
   }
-  
+
   .projectContentSection {
     padding: 18px;
   }
-  
+
   .projectTitle {
     font-size: 1.3rem;
   }
-  
+
   .projectDescription {
     font-size: 0.85rem;
     line-height: 1.5;
   }
-  
+
   .autoPlayIndicator {
     margin-left: 15px;
     padding: 6px 10px;
   }
-  
+
   .autoPlayText {
     font-size: 0.75rem;
   }
-  
+
   .sectionTitle {
     font-size: 2.5rem;
   }
-  
+
   .projectCounter {
     font-size: 1.5rem;
   }
-  
+
   .actionButton {
     padding: 10px 16px;
     font-size: 0.85rem;
@@ -594,152 +1185,152 @@
   .projectSection {
     padding: 60px 0;
   }
-  
+
   .fullContainer {
     padding: 0 15px;
   }
-  
+
   .sectionHeader {
     margin-bottom: 40px;
   }
-  
+
   .headerContent {
     flex-direction: column;
     text-align: center;
     gap: 20px;
     max-width: 600px;
   }
-  
+
   .projectContainer {
     padding: 20px 10px;
     max-width: 500px;
     min-height: 320px;
   }
-  
+
   .navButton {
     width: 48px;
     height: 48px;
     font-size: 1.1rem;
     box-shadow: 0 3px 12px rgba(102, 126, 234, 0.3);
   }
-  
+
   .prevButton {
     left: -45px;
   }
-  
+
   .nextButton {
     right: -45px;
   }
-  
+
   .projectCard {
     max-width: 450px;
     min-height: 320px;
     border-radius: 20px;
   }
-  
+
   .projectImageSection {
     height: 150px;
   }
-  
+
   .projectContentSection {
     padding: 16px;
   }
-  
+
   .projectHeader {
     flex-direction: column;
     gap: 8px;
     text-align: center;
     margin-bottom: 16px;
   }
-  
+
   .projectIcon {
     font-size: 1.8rem;
     align-self: center;
   }
-  
+
   .projectTitle {
     font-size: 1.2rem;
     line-height: 1.3;
   }
-  
+
   .projectDescription {
     font-size: 0.8rem;
     line-height: 1.5;
     margin-bottom: 16px;
     text-align: center;
   }
-  
+
   .techStackSection {
     margin-bottom: 16px;
   }
-  
+
   .techStack {
     justify-content: center;
     gap: 6px;
   }
-  
+
   .techBadge {
     padding: 4px 8px;
     font-size: 0.7rem;
   }
-  
+
   .actionButton {
     font-size: 0.8rem;
     padding: 10px 16px;
     min-height: 44px;
   }
-  
+
   .projectActions {
     flex-direction: column;
     gap: 12px;
   }
-  
+
   .sectionTitle {
     font-size: 2.2rem;
   }
-  
+
   .sectionSubtitle {
     font-size: 1rem;
   }
-  
+
   .projectCounter {
     gap: 8px;
     font-size: 1.2rem;
   }
-  
+
   .currentNumber {
     font-size: 1.8rem;
   }
-  
+
   .separator {
     font-size: 1.3rem;
   }
-  
+
   .totalNumber {
     font-size: 1.3rem;
   }
-  
+
   .autoPlayIndicator {
     margin-left: 10px;
     padding: 6px 8px;
   }
-  
+
   .autoPlayDot {
     width: 6px;
     height: 6px;
   }
-  
+
   .autoPlayText {
     font-size: 0.7rem;
   }
-  
+
   /* Better touch targets for mobile */
   .overlayButton {
     padding: 12px 20px;
     min-height: 44px;
     font-size: 0.85rem;
   }
-  
+
   .indicator {
     width: 14px;
     height: 14px;
@@ -751,153 +1342,153 @@
   .projectSection {
     padding: 50px 0;
   }
-  
+
   .fullContainer {
     padding: 0 10px;
   }
-  
+
   .sectionHeader {
     margin-bottom: 30px;
   }
-  
+
   .headerContent {
     gap: 15px;
   }
-  
+
   .projectContainer {
     padding: 15px 5px;
     max-width: 350px;
     min-height: 280px;
   }
-  
+
   .navButton {
     width: 42px;
     height: 42px;
     font-size: 1rem;
     box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
   }
-  
+
   .prevButton {
     left: -35px;
   }
-  
+
   .nextButton {
     right: -35px;
   }
-  
+
   .projectCard {
     max-width: 320px;
     min-height: 280px;
     border-radius: 16px;
   }
-  
+
   .projectImageSection {
     height: 130px;
   }
-  
+
   .projectContentSection {
     padding: 14px;
   }
-  
+
   .projectHeader {
     margin-bottom: 12px;
     gap: 6px;
   }
-  
+
   .projectIcon {
     font-size: 1.6rem;
   }
-  
+
   .projectTitle {
     font-size: 1.1rem;
     line-height: 1.2;
   }
-  
+
   .projectDescription {
     font-size: 0.75rem;
     line-height: 1.4;
     margin-bottom: 12px;
   }
-  
+
   .techStack {
     gap: 4px;
     justify-content: center;
   }
-  
+
   .techBadge {
     padding: 3px 6px;
     font-size: 0.65rem;
   }
-  
+
   .techStackSection {
     margin-bottom: 12px;
   }
-  
+
   .overlayActions {
     flex-direction: column;
     gap: 12px;
   }
-  
+
   .overlayButton {
     padding: 10px 16px;
     font-size: 0.8rem;
     min-height: 40px;
   }
-  
+
   .actionButton {
     padding: 8px 12px;
     font-size: 0.75rem;
     min-height: 40px;
   }
-  
+
   .sectionTitle {
     font-size: 1.8rem;
     line-height: 1.2;
   }
-  
+
   .sectionSubtitle {
     font-size: 0.9rem;
   }
-  
+
   .projectCounter {
     gap: 6px;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .currentNumber {
     font-size: 1.4rem;
   }
-  
+
   .separator {
     font-size: 1rem;
   }
-  
+
   .totalNumber {
     font-size: 1rem;
   }
-  
+
   .autoPlayIndicator {
     margin-left: 0;
     margin-top: 8px;
     padding: 4px 6px;
   }
-  
+
   .autoPlayDot {
     width: 5px;
     height: 5px;
   }
-  
+
   .autoPlayText {
     font-size: 0.65rem;
   }
-  
+
   .indicator {
     width: 12px;
     height: 12px;
     margin: 0 1px;
   }
-  
+
   /* Improve spacing for very small screens */
   .projectIndicators {
     margin-top: 25px;
@@ -911,6 +1502,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -956,11 +1548,11 @@
   .navButton:hover:not(:disabled) {
     transform: translateY(-3px) scale(1.05);
   }
-  
+
   .projectCard:hover {
     transform: translateY(-8px) rotateX(2deg);
   }
-  
+
   .indicator:hover:not(.active) {
     background: #94a3b8;
     transform: scale(1.1);
@@ -973,12 +1565,12 @@
     transform: translateY(-1px) scale(1.02);
     transition: transform 0.1s ease;
   }
-  
+
   .projectCard:active {
     transform: scale(0.98);
     transition: transform 0.1s ease;
   }
-  
+
   .actionButton:active,
   .overlayButton:active {
     transform: scale(0.95);
@@ -988,6 +1580,7 @@
 
 /* Reduced motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
+
   .projectCard,
   .navButton,
   .indicator,
@@ -997,12 +1590,94 @@
     transition: none;
     animation: none;
   }
-  
+
   .projectCard:hover {
     transform: none;
   }
-  
+
   .navButton:hover:not(:disabled) {
     transform: none;
+  }
+}
+
+/* -- Overrides for consistent responsive behaviour and overlay readability -- */
+
+/* Base layout: allow wrapping so grid naturally moves to next line when needed */
+.projectGrid {
+  display: flex !important;
+  flex-wrap: wrap !important; /* allow multiple rows */
+  gap: 22px !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  padding-bottom: 8px;
+}
+
+.projectGrid::-webkit-scrollbar { display: none; }
+
+/* Card sizing: sensible defaults so items reflow */
+.projectCard {
+  flex: 1 1 320px; /* grow/shrink, but prefer ~320px */
+  max-width: 360px;
+  min-width: 240px;
+}
+
+/* Make titles, description and buttons scale using clamp for more fluid resizing */
+.projectTitle {
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+}
+.projectDescription {
+  font-size: clamp(0.78rem, 1.0vw, 0.92rem);
+}
+.actionButton {
+  font-size: clamp(0.72rem, 1.0vw, 0.9rem);
+  padding: 8px 12px;
+}
+
+/* Darken the image on hover to increase contrast for overlay text */
+.projectCard .projectImage {
+  transition: transform 0.4s ease, filter 0.35s ease;
+}
+.projectCard:hover .projectImage {
+  transform: scale(1.06);
+  filter: brightness(0.48) saturate(0.95) contrast(0.95);
+}
+
+/* Ensure overlay uses a strong dark background when visible */
+.projectOverlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+  color: #f8fafc;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.projectCard:hover .projectOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Desktop column control: 3 columns on wide screens, 2 on medium, 1 on small */
+@media (min-width: 1200px) {
+  .projectCard {
+    flex: 0 0 calc((100% - 44px) / 3);
+    max-width: calc((100% - 44px) / 3);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .projectCard {
+    flex: 0 0 calc((100% - 22px) / 2);
+    max-width: calc((100% - 22px) / 2);
+  }
+}
+
+@media (max-width: 767px) {
+  .projectCard {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .projectImageSection {
+    height: 160px;
   }
 }

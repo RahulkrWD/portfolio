@@ -1,6 +1,5 @@
-
 .contactSection {
-  padding: 80px 0;
+  padding: var(--section-padding) 0;
   background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
   position: relative;
   overflow: hidden;
@@ -18,9 +17,17 @@
 }
 
 @keyframes pulseBackground {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -96,8 +103,13 @@
 }
 
 @keyframes expandWidth {
-  from { width: 0; }
-  to { width: 50px; }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 50px;
+  }
 }
 
 .socialDescription {
@@ -201,6 +213,7 @@
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -212,6 +225,7 @@
   margin-bottom: 25px;
   position: relative;
   padding-bottom: 10px;
+  color: #e6f1ff;
 }
 
 .messageTitle::after {
@@ -228,16 +242,65 @@
   margin-bottom: 20px;
 }
 
+.fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
 .inputField {
   width: 100%;
 }
 
-.inputField .MuiOutlinedInput-root {
-  border-radius: 8px;
+/* MUI dark theme overrides (scoped via CSS modules) */
+.inputField :global(.MuiInputLabel-root) {
+  color: #a8b2d1;
 }
 
-.inputField .MuiOutlinedInput-input {
-  padding: 12px 14px;
+.inputField :global(.MuiInputLabel-root.Mui-focused) {
+  color: #64ffda;
+}
+
+.inputField :global(.MuiOutlinedInput-root) {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e6f1ff;
+}
+
+.inputField :global(.MuiOutlinedInput-notchedOutline) {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.inputField :global(.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline) {
+  border-color: rgba(100, 255, 218, 0.35);
+}
+
+.inputField :global(.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline) {
+  border-color: rgba(100, 255, 218, 0.8);
+  box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.12);
+}
+
+.inputField :global(.MuiOutlinedInput-input) {
+  padding: 14px 14px;
+  color: #e6f1ff;
+}
+
+.inputField :global(textarea.MuiOutlinedInput-input) {
+  color: #e6f1ff;
+}
+
+.inputField :global(.MuiFormHelperText-root) {
+  color: #a8b2d1;
+}
+
+.inputField :global(.Mui-disabled) {
+  -webkit-text-fill-color: rgba(230, 241, 255, 0.55);
+  color: rgba(230, 241, 255, 0.55);
+}
+
+.inputField :global(.MuiOutlinedInput-root.Mui-disabled) {
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .submitBtn {
@@ -285,10 +348,24 @@
 }
 
 @keyframes flyIcon {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(100%); opacity: 0; }
-  51% { transform: translateX(-100%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  51% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .submitBtn:disabled {
@@ -308,6 +385,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -409,6 +487,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -420,6 +499,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -431,6 +511,7 @@
     opacity: 0;
     transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -442,26 +523,28 @@
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
-  
-  .socialContainer, .messageContainer {
-    padding: 25px;
-  }
+
+.socialContainer,
+.messageContainer {
+  padding: 25px;
+}
 
 
 @media (max-width: 768px) {
   .contactSection {
     padding: 60px 0;
   }
-  
+
   .sectionHeading {
     font-size: 2rem;
   }
-  
+
   .sectionSubtitle {
     font-size: 1rem;
     margin-bottom: 40px;
@@ -472,11 +555,11 @@
   .socialIcons {
     justify-content: center;
   }
-  
+
   .contactItem {
     font-size: 0.9rem;
   }
-  
+
   .submitBtn {
     width: 100%;
     justify-content: center;
