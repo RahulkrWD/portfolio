@@ -10,17 +10,23 @@ function WorkExperience() {
       <Container>
         <SectionHeading
           title="Work Experience"
-          subtitle="Hands-on experience building real mobile features"
+          subtitle="Hands-on experience building web and mobile solutions"
         />
 
         <Row className="justify-content-center">
           <Col lg={10}>
-            <div className={styles.card} data-aos="fade-up" data-aos-delay="100">
+            <div
+              className={styles.card}
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <div className={styles.cardHeader}>
                 <div className={styles.role}>
                   <FaBriefcase className={styles.roleIcon} />
                   <div>
-                    <h3 className={styles.roleTitle}>React Native Developer</h3>
+                    <h3 className={styles.roleTitle}>
+                      Associate Software Developer (Trainee)
+                    </h3>
                     <p className={styles.company}>Intern / Trainee</p>
                   </div>
                 </div>
@@ -37,24 +43,25 @@ function WorkExperience() {
 
               <ul className={styles.bullets}>
                 <li>
-                  Built and maintained mobile screens in React Native with reusable
-                  components and consistent UI.
+                  Developed and maintained features across web and mobile using
+                  modern JavaScript frameworks and reusable components.
                 </li>
                 <li>
-                  Integrated REST APIs, handled loading/error states, and improved
-                  user flows across multiple screens.
+                  Integrated REST APIs, handled loading/error states, and
+                  refined user flows to improve overall UX.
                 </li>
                 <li>
-                  Worked with navigation, state management, and debugging to deliver
-                  stable app builds.
+                  Collaborated on state management, routing, and debugging to
+                  deliver stable application builds.
                 </li>
               </ul>
 
               <div className={styles.tech}>
                 <span className={styles.techLabel}>Tech:</span>
                 <div className={styles.techStack}>
+                  <span className={styles.techItem}>React.js</span>
                   <span className={styles.techItem}>React Native</span>
-                  <span className={styles.techItem}>JavaScript</span>
+                  <span className={styles.techItem}>Node.js</span>
                   <span className={styles.techItem}>TypeScript</span>
                   <span className={styles.techItem}>REST APIs</span>
                   <span className={styles.techItem}>Git</span>
@@ -69,4 +76,3 @@ function WorkExperience() {
 }
 
 export default WorkExperience;
-

@@ -52,12 +52,12 @@ function HomePage() {
         <Skills data-aos="fade-up" data-aos-delay="150" />
       </div>
 
-      <div id="projects">
-        <Projects data-aos="fade-up" data-aos-delay="200" />
-      </div>
-
       <div id="experience">
         <WorkExperience data-aos="fade-up" data-aos-delay="225" />
+      </div>
+
+      <div id="projects">
+        <Projects data-aos="fade-up" data-aos-delay="200" />
       </div>
 
       <Services data-aos="fade-up" data-aos-delay="250" />

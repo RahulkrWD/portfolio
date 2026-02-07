@@ -8,6 +8,7 @@ import {
   FaBuilding,
   FaChalkboardTeacher,
   FaGithub,
+  FaRocket,
 } from "react-icons/fa";
 import { Container } from "react-bootstrap";
 import styles from "./styles/Projects.module.css";
@@ -98,38 +99,7 @@ const webProjects = [
   },
 ];
 
-const mobileProjects = [
-  {
-    title: "Personal Finance Tracker (React Native)",
-    icon: <FaSuitcaseRolling className="text-info" size={24} />,
-    src: "./image/portfolio-creator.png",
-    alt: "Personal finance tracker app",
-    live: "#",
-    github: "#",
-    desc: "Cross-platform mobile app to track daily expenses, budgets, and savings goals. Uses React Native UI, Zustand for predictable global state, and a NestJS + MongoDB backend for secure APIs and analytics.",
-    tech: ["React Native", "TypeScript", "Zustand", "NestJS", "MongoDB"],
-  },
-  {
-    title: "Habit & Wellness Companion",
-    icon: <FaMedkit className="text-danger" size={24} />,
-    src: "./image/medication.png",
-    alt: "Habit and wellness companion app",
-    live: "#",
-    github: "#",
-    desc: "Mobile app to build healthy routines with streaks, reminders, and progress insights. Built with React Native, Zustand, and a NestJS + MongoDB backend for users, habits, and notifications.",
-    tech: ["React Native", "Zustand", "NestJS", "MongoDB", "REST API"],
-  },
-  {
-    title: "Event Booking & Check-in",
-    icon: <FaBuilding className="text-primary" size={24} />,
-    src: "./image/travel.png",
-    alt: "Event booking and check-in app",
-    live: "#",
-    github: "#",
-    desc: "Event booking app where users browse events, book seats, and check in with QR codes. React Native frontend with a NestJS + MongoDB backend managing bookings, tickets, and JWT-secured sessions.",
-    tech: ["React Native", "TypeScript", "NestJS", "MongoDB", "JWT"],
-  },
-];
+const mobileProjects = [];
 
 function Projects() {
   const [activeTab, setActiveTab] = useState("web"); // 'web' | 'mobile'
@@ -138,18 +108,18 @@ function Projects() {
 
   return (
     <section id="projects" className={styles.projectSection}>
-      <div className={`container ${styles.fullContainer}`}>
+      <div className={styles.contentWrapper}>
         <div className={styles.sectionHeader}>
           <div className={styles.headerContent}>
             <SectionHeading
               title="My Projects"
               subtitle="Selected work across web and mobile applications"
-              align="left"
+              align="center"
             />
           </div>
         </div>
 
-        <div className={styles.tabs}>
+        <div className={styles.tabsContainer}>
           <button
             type="button"
             className={`${styles.tab} ${
@@ -170,70 +140,90 @@ function Projects() {
           </button>
         </div>
 
-        <div className={styles.projectGrid}>
-          {projectsToShow.map((project, index) => (
-            <article
-              key={index}
-              className={styles.projectCard}
-              data-aos="fade-up"
-              data-aos-delay={index * 80}
-            >
-              <div className={styles.projectHeader}>
-                <div className={styles.projectIcon}>{project.icon}</div>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-              </div>
-
-              <div className={styles.projectImageSection}>
-                <img
-                  src={project.src}
-                  alt={project.alt}
-                  className={styles.projectImage}
-                />
-                <div className={styles.projectOverlay}>
-                  <p className={styles.projectDescription}>{project.desc}</p>
+        {projectsToShow.length > 0 ? (
+          <div className={styles.projectGrid}>
+            {projectsToShow.map((project, index) => (
+              <article
+                key={index}
+                className={styles.projectCard}
+                data-aos="fade-up"
+                data-aos-delay={index * 80}
+              >
+                <div className={styles.projectHeader}>
+                  <div className={styles.projectIcon}>{project.icon}</div>
+                  <h3 className={styles.projectTitle}>{project.title}</h3>
                 </div>
-              </div>
 
-              <div className={styles.projectContentSection}>
-                <div className={styles.techStackSection}>
-                  <h4 className={styles.techStackTitle}>Tech Stack</h4>
-                  <div className={styles.techStack}>
-                    {project.tech.map((tech, techIndex) => (
-                      <span key={techIndex} className={styles.techItem}>
-                        {tech}
-                      </span>
-                    ))}
+                <div className={styles.projectImageSection}>
+                  <img
+                    src={project.src}
+                    alt={project.alt}
+                    className={styles.projectImage}
+                  />
+                  <div className={styles.projectOverlay}>
+                    <p className={styles.projectDescription}>{project.desc}</p>
                   </div>
                 </div>
 
-                <div className={styles.projectActions}>
-                  {project.live && project.live !== "#" && (
-                    <Link
-                      to={project.live}
-                      className={`${styles.actionButton} ${styles.liveButton}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaExternalLinkAlt className={styles.actionIcon} />
-                      Live Preview
-                    </Link>
-                  )}
-                  {project.github && project.github !== "#" && (
-                    <Link
-                      to={project.github}
-                      className={`${styles.actionButton} ${styles.codeButton}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaGithub className={styles.actionIcon} />
-                      View Code
-                    </Link>
-                  )}
+                <div className={styles.projectContentSection}>
+                  <div className={styles.techStackSection}>
+                    <h4 className={styles.techStackTitle}>Tech Stack</h4>
+                    <div className={styles.techStack}>
+                      {project.tech.map((tech, techIndex) => (
+                        <span key={techIndex} className={styles.techItem}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className={styles.projectActions}>
+                    {project.live && project.live !== "#" && (
+                      <Link
+                        to={project.live}
+                        className={`${styles.actionButton} ${styles.liveButton}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaExternalLinkAlt className={styles.actionIcon} />
+                        Live Preview
+                      </Link>
+                    )}
+                    {project.github && project.github !== "#" && (
+                      <Link
+                        to={project.github}
+                        className={`${styles.actionButton} ${styles.codeButton}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaGithub className={styles.actionIcon} />
+                        View Code
+                      </Link>
+                    )}
+                  </div>
                 </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.emptyState}>
+            <div className={styles.emptyStateContent}>
+              <div className={styles.rocketIcon}>
+                <FaRocket />
               </div>
-            </article>
-          ))}
-        </div>
+              <h3 className={styles.emptyStateTitle}>Coming Soon!</h3>
+              <p className={styles.emptyStateMessage}>
+                Exciting {activeTab === "web" ? "web" : "mobile"} projects are
+                on the way. Stay tuned for amazing work!
+              </p>
+              <div className={styles.emptyStateAnimation}>
+                <div className={styles.star}></div>
+                <div className={styles.star}></div>
+                <div className={styles.star}></div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

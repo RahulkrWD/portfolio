@@ -18,38 +18,39 @@ import {
 function Services() {
   const services = [
     {
-      title: "Custom Web Development",
+      title: "Full-Stack Web Development",
       icon: faCode,
       description:
-        "Tailored web applications designed to meet your unique business requirements",
+        "End-to-end web development services using modern technologies and best practices to create responsive, scalable applications",
       features: [
-        { text: "Full stack development with modern frameworks", icon: faCode },
-        { text: "Responsive, mobile-first design", icon: faMobileScreen },
-        { text: "Third-party API integration", icon: faPlug },
-        { text: "Scalable architecture", icon: faServer },
+        { text: "React, Vue, Angular frontend frameworks", icon: faCode },
+        { text: "Node.js, Express, NestJS backend solutions", icon: faServer },
+        { text: "Responsive & mobile-first design", icon: faMobileScreen },
+        { text: "Database design & optimization", icon: faChartLine },
       ],
     },
     {
-      title: "E-commerce Solutions",
+      title: "Mobile App Development",
+      icon: faMobileScreen,
+      description:
+        "Native and cross-platform mobile applications for iOS and Android with seamless user experience and performance",
+      features: [
+        { text: "React Native & Flutter development", icon: faMobileScreen },
+        { text: "API integration & real-time features", icon: faPlug },
+        { text: "Secure authentication systems", icon: faShieldHalved },
+        { text: "App deployment & maintenance", icon: faRocket },
+      ],
+    },
+    {
+      title: "E-Commerce & Business Solutions",
       icon: faShoppingCart,
       description:
-        "Complete online store solutions to boost your digital sales",
+        "Complete e-commerce platforms and business solutions with payment integration, analytics, and admin dashboards",
       features: [
+        { text: "Multi-vendor store management", icon: faChartLine },
         { text: "Secure payment gateway integration", icon: faShieldHalved },
-        { text: "Product management systems", icon: faChartLine },
-        { text: "Optimized checkout experience", icon: faRocket },
-        { text: "Ongoing support & maintenance", icon: faCogs },
-      ],
-    },
-    {
-      title: "API Development",
-      icon: faCogs,
-      description: "Powerful APIs to connect your systems and services",
-      features: [
-        { text: "RESTful & GraphQL API development", icon: faPlug },
-        { text: "Existing API integration", icon: faServer },
-        { text: "Secure authentication", icon: faShieldHalved },
-        { text: "Comprehensive documentation", icon: faPalette },
+        { text: "Inventory & order management", icon: faCogs },
+        { text: "Analytics & reporting tools", icon: faRocket },
       ],
     },
   ];
@@ -59,7 +60,7 @@ function Services() {
       <div className={styles.container}>
         <SectionHeading
           title="My Services"
-          subtitle="Solutions tailored to your business needs"
+          subtitle="Professional development services for web and mobile applications"
         />
 
         <div className={styles.servicesGrid}>
