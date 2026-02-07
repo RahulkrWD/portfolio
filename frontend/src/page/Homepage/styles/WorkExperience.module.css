@@ -1,0 +1,123 @@
+.experienceSection {
+  padding: var(--section-padding) 0;
+  background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  border-radius: 20px;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.16);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.role {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.roleIcon {
+  color: #64ffda;
+  font-size: 1.4rem;
+  margin-top: 4px;
+}
+
+.roleTitle {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #e6f1ff;
+  font-weight: 700;
+}
+
+.company {
+  margin: 4px 0 0;
+  color: #a8b2d1;
+  font-size: 0.95rem;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #a8b2d1;
+  font-size: 0.9rem;
+  align-items: flex-end;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bullets {
+  margin: 0;
+  padding-left: 18px;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.bullets li {
+  margin-bottom: 10px;
+}
+
+.tech {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.techLabel {
+  color: #e6f1ff;
+  font-weight: 600;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.techItem {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  color: #a8b2d1;
+  background: rgba(100, 255, 218, 0.08);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .experienceSection {
+    padding: 60px 0;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .meta {
+    align-items: flex-start;
+  }
+}

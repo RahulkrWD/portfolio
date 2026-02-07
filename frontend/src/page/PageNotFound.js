@@ -22,7 +22,7 @@ function PageNotFound() {
     <div className={styles.container}>
       <img
         className={styles.not_found}
-        src="/image/pagenotFound.svg"
+        src="/image/undraw_page_not_found_re_e9o6.svg"
         alt="Page Not Found"
       />
       <h1 className={styles.not_found_heading}>Page Not Found</h1>

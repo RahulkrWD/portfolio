@@ -3,12 +3,16 @@ import styles from "./styles/About.module.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaLaptopCode, FaLayerGroup, FaRocket, FaCode, FaDatabase, FaServer, FaGitAlt, FaTools, FaReact } from "react-icons/fa";
 import { SiRedux, SiTailwindcss } from "react-icons/si";
+import SectionHeading from "../../components/SectionHeading";
 
 function About() {
   return (
     <section id="about" className={styles.aboutSection}>
       <Container>
-        <h2 className={styles.sectionHeading} data-aos="fade-down">About Me</h2>
+        <SectionHeading
+          title="About Me"
+          subtitle="A quick snapshot of who I am and what I build"
+        />
         <Row className="align-items-center">
           <Col lg={6} className={styles.imageContainer} data-aos="fade-right">
             <img
@@ -31,11 +35,12 @@ function About() {
           <Col lg={6} className={styles.aboutContent} data-aos="fade-left">
             <p className={styles.aboutText}>
               <span className={styles.firstLetter}>P</span>assionate Full Stack
-              Developer skilled in the MERN stack (MongoDB, Express.js,
-              React.js, Node.js). I build scalable web applications with clean,
-              responsive UIs and strong backend integration. I enjoy turning
-              ideas into user-friendly, high-performance solutions while staying
-              updated with modern web development trends.
+              Developer with hands-on experience building responsive, production-ready
+              web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js),
+              and 3 months of experience working on React Native mobile apps. I focus on
+              clean UI, scalable APIs, and maintainable code—delivering smooth user experiences
+              across web and mobile. I enjoy solving real-world problems, collaborating with teams,
+              and improving through modern best practices and tools.
             </p>
 
             <div className={styles.aboutHighlights}>

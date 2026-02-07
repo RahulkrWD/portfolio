@@ -3,6 +3,7 @@ import Header from "./Header";
 import About from "./About";
 import Skills from "./Skills";
 import Projects from "./Projects";
+import WorkExperience from "./WorkExperience";
 import Services from "./Services";
 import Contact from "./contact/Contact";
 import ScrollButton from "../../components/ScrollButton";
@@ -49,6 +50,10 @@ function HomePage() {
 
       <div id="skills">
         <Skills data-aos="fade-up" data-aos-delay="150" />
+      </div>
+
+      <div id="experience">
+        <WorkExperience data-aos="fade-up" data-aos-delay="225" />
       </div>
 
       <div id="projects">

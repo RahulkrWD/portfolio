@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import SectionHeading from "../../../components/SectionHeading";
 import {
   FaPhone,
   FaEnvelope,
@@ -86,64 +87,66 @@ export function Message() {
       onSubmit={fetchMessage}
       className={styles.messageContainer}
       data-aos="fade-left"
+      aria-busy={sendMessage.isLoading}
     >
       <h3 className={styles.messageTitle}>Send me a message</h3>
 
-      <div className={styles.formGroup}>
-        <TextField
-          fullWidth
-          name="name" // Changed from id to name
-          label="Your Name"
-          value={sendMessage.name}
-          onChange={handleInput}
-          variant="outlined"
-          className={styles.inputField}
-          required
-        />
-      </div>
+      <fieldset disabled={sendMessage.isLoading} className={styles.fieldset}>
+        <div className={styles.formGroup}>
+          <TextField
+            fullWidth
+            name="name"
+            label="Your Name"
+            value={sendMessage.name}
+            onChange={handleInput}
+            variant="outlined"
+            className={styles.inputField}
+            required
+            disabled={sendMessage.isLoading}
+          />
+        </div>
 
-      <div className={styles.formGroup}>
-        <TextField
-          fullWidth
-          name="email" // Changed from id to name
-          label="Your Email"
-          type="email"
-          value={sendMessage.email}
-          onChange={handleInput}
-          variant="outlined"
-          className={styles.inputField}
-          required
-        />
-      </div>
+        <div className={styles.formGroup}>
+          <TextField
+            fullWidth
+            name="email"
+            label="Your Email"
+            type="email"
+            value={sendMessage.email}
+            onChange={handleInput}
+            variant="outlined"
+            className={styles.inputField}
+            required
+            disabled={sendMessage.isLoading}
+          />
+        </div>
 
-      <div className={styles.formGroup}>
-        <TextField
-          fullWidth
-          name="message" // Changed from id to name
-          label="Your Message"
-          multiline
-          rows={4}
-          value={sendMessage.message}
-          onChange={handleInput}
-          variant="outlined"
-          className={styles.inputField}
-          required
-        />
-      </div>
+        <div className={styles.formGroup}>
+          <TextField
+            fullWidth
+            name="message"
+            label="Your Message"
+            multiline
+            rows={4}
+            value={sendMessage.message}
+            onChange={handleInput}
+            variant="outlined"
+            className={styles.inputField}
+            required
+            disabled={sendMessage.isLoading}
+          />
+        </div>
 
-      <button
-        type="submit"
-        className={styles.submitBtn}
-        disabled={sendMessage.isLoading}
-      >
-        {sendMessage.isLoading ? (
-          "Sending..."
-        ) : (
-          <>
-            Send Message <FaPaperPlane className={styles.sendIcon} />
-          </>
-        )}
-      </button>
+        <button type="submit" className={styles.submitBtn}>
+          {sendMessage.isLoading ? (
+            "Sending..."
+          ) : (
+            <>
+              Send Message <FaPaperPlane className={styles.sendIcon} />
+            </>
+          )}
+        </button>
+      </fieldset>
 
       <Toaster position="top-right" />
     </form>
@@ -154,7 +157,10 @@ function Contact() {
   return (
     <section id="contact" className={styles.contactSection}>
       <div className={styles.container}>
-        <h2 className={styles.sectionHeading}>Get In Touch</h2>
+        <SectionHeading
+          title="Get In Touch"
+          subtitle="Have a project idea or want to collaborate? Let’s talk."
+        />
         <div className={styles.contactGrid}>
           <div className={styles.socialContainer} data-aos="fade-right">
             <h3 className={styles.socialTitle}>Contact Information</h3>

@@ -1,5 +1,5 @@
 .header {
-  min-height: 90vh;
+  min-height: 78vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -7,6 +7,8 @@
   justify-content: center;
   position: relative;
   background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.95));
+  padding: 96px 0 40px;
+  /* accounts for fixed navbar */
 }
 
 .textContent {
@@ -183,8 +185,15 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 .header_image {
@@ -205,6 +214,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -215,6 +225,7 @@
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0);
   }
@@ -224,6 +235,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -234,6 +246,7 @@
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -246,17 +259,17 @@
     grid-template-columns: 1fr;
     gap: 30px;
   }
-  
+
   .imageContainer {
     order: -1;
     max-width: 400px;
     margin: 0 auto;
   }
-  
+
   .adminName {
     font-size: 2.5rem;
   }
-  
+
   .animation {
     font-size: 1.3rem;
   }
